@@ -1,0 +1,85 @@
+# Project information
+site_name: Medal of Honor Reborn
+site_description: Documentation for Medal of Honor Reborn Community Patch
+site_author: Michał 'Razo[R]apiD' Knieć & xNULL Development contributors
+site_url: https://x-null.github.io/mohreborn-docs/
+
+# Repository
+repo_name: x-null/mohreborn-docs
+repo_url: https://github.com/x-null/mohreborn-docs
+edit_uri: ''
+
+# Copyright
+copyright: Copyright &copy; 2020 xNULL Development
+
+# Page tree
+nav:
+  - 'Home': index.md
+  - 'Welcome': welcome.md
+  - 'Project overview': project-overview.md
+  - 'Getting started':
+    - 'Play online': getting-started/play-online.md
+    - 'Host your own server': getting-started/host-your-own-server.md
+    - 'Player Guide': getting-started/player-guide.md
+    - 'Server Admin Guide': getting-started/server-admin-guide.md
+    - 'Modding Guide': getting-started/modding-guide.md
+
+  - 'Features':
+    - 'Features Overview': features/features-overview.md
+    - 'For Players':
+        - 'Player voting': features/player/player-voting.md
+    - 'For Server Admins':
+        - 'Admin accounts and permissions': features/server-admin/accounts-and-permissions.md
+        - 'Banning and kicking players': features/server-admin/banning-kicking-players.md
+        - 'Chat management': features/server-admin/chat-management.md
+        - 'Protected player names': features/server-admin/protected-player-names.md
+        - 'Anti Wallhack': features/server-admin/anti-wallhack.md
+        - 'Anti NoRecoil': features/server-admin/anti-norecoil.md
+        - 'Anti STWH': features/server-admin/anti-stwh.md
+        - 'High Ping Autokick': features/server-admin/high-ping-autokick.md
+        - 'Connections Limiter': features/server-admin/connections-limiter.md
+        - 'Anti Packet Flood': features/server-admin/anti-packet-flood.md
+        - 'Stufftext Bypass Detection': features/server-admin/stufftext-bypass-detection.md
+        - 'Player voting': features/server-admin/player-voting.md
+        - 'Automatic updates': features/server-admin/automatic-updates.md
+    - 'For Modders':
+        - 'Extended scripting': features/modder/extended-scripting.md
+        - 'Event system': features/modder/event-system.md
+
+# Configuration
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  palette:
+    primary: brown
+    accent: deep orange
+  favicon: assets/images/favicon.png
+  icon:
+    logo: fontawesome/solid/medal
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - tabs
+
+extra_css:
+  - styles/extra.css
+
+# Extras
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/x-null
+    - icon: fontawesome/brands/discord
+      link: https://www.discord.gg/kGp8vGC
+
+# Extensions
+markdown_extensions:
+  - meta
+  - admonition
+  - attr_list
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true

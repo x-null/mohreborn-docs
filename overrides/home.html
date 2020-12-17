@@ -1,0 +1,178 @@
+{% extends "main.html" %}
+{% block styles %}
+{{ super() }}
+<style>
+    .md-main {
+        background: linear-gradient(171deg, #795649, #795649, #46413f calc(50% - 1px), white 50%);
+    }
+    .md-content {
+        margin-left: 0;
+        margin-right: 0;
+        flex: 1;
+        max-width: 100%;
+    }
+    .md-content__inner {
+        margin: 0 .8rem 1.2rem;
+        padding-top: .6rem;
+    }
+
+    .hero-container .inverted-color {
+      color: var(--md-primary-bg-color);
+    }
+
+    /* Make main headline thicker */
+    .hero-container h1 {
+      margin-bottom: 1rem;
+      color: currentColor;
+      font-weight: 700;
+    }
+
+    /* Adjust spacing of buttons and invert them */
+    .hero-container .md-button {
+      margin-top: .5rem;
+      margin-right: .5rem;
+    }
+
+    .hero-container .inverted-color .md-button {
+      color: var(--md-primary-bg-color);
+    }
+
+    /* Invert primary button */
+    .hero-container .inverted-color .md-button--primary {
+      background-color: var(--md-primary-bg-color);
+      color: hsla(193deg, 37%, 48%, 1);
+      border-color: var(--md-primary-bg-color);
+    }
+
+    /* Invert hover and focus button states */
+    .hero-container .md-button:hover,
+    .hero-container .md-button:focus {
+      background-color: var(--md-accent-fg-color);
+      color: var(--md-default-bg-color);
+      border-color: var(--md-accent-fg-color);
+    }
+
+    .hero-container .pb10 {
+        padding-bottom: 24vh;
+      }
+
+      .hero-container .text-right {
+        text-align: right;
+      }
+
+    /* [mobile portrait -]: Adjust headline */
+    @media screen and (max-width: 30em) {
+
+      /* Make main headline smaller */
+      .hero-container h1 {
+        font-size: 1.4rem;
+      }
+
+
+    }
+
+    /* [mobile portrait -]: Adjust headline */
+    @media screen and (max-width: 60em) {
+       .hero-container .image-content, .content.placeholder {
+        display: none;
+      }
+      .hero-container .content {
+        padding-bottom: 6rem;
+      }
+    }
+
+    /* [tablet landscape +]: Display content and image next to each other */
+    @media screen and (min-width: 60em) {
+
+      /* Use flex layout to align items */
+      .hero-container {
+        display: flex;
+        align-items: stretch;
+        flex-wrap: wrap;
+      }
+
+      /* Increase bottom spacing and set dimensions */
+      .hero-container .content {
+        width: 50%;
+      }
+
+      /* Swap with teaser and set dimensions */
+      .hero-container .image-content {
+        width: 50%;
+      }
+
+      .hero-container .image-content img {
+        position: absolute;
+      }
+    }
+
+    /* [screen +]: Adjust spacing */
+    @media screen and (min-width: 76.25em) {
+      /* Hide navigation */
+      .md-sidebar {
+        display: none;
+      }
+
+      /* Ensure the image aligns with the repository information */
+      .hero-container .image-content img {
+        transform: scale(0.5) translate(10%, 75%);
+      }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero-container">
+    <!-- Hero content -->
+    <div class="content inverted-color pb10">
+        <h1>Play MoH:AA/SH/BT Online</h1>
+        <p>
+            On May 31, 2014 - GameSpy MasterServer, which kept list of all online MoH servers has been shut down.
+            xNULL team created custom Reborn MasterServer in order to save the game we all love so much.
+        </p>
+        <p>Patch your game, make in-game server browser work again, and join other players online!</p>
+        <a
+                href="/getting-started/play-online"
+                title="Play online - Get started"
+                class="md-button md-button--primary"
+        >
+            Get started
+        </a>
+        <a
+                href="/welcome"
+                title="Learn more"
+                class="md-button"
+        >
+            Learn more
+        </a>
+    </div>
+    <div class="image-content inverted-color pb10">
+        <img src="assets/images/mohaa-pic.png" style="transform: scale(0.75) translate(10%, 20%) rotate(-30deg);"/>
+        <img src="assets/images/mohaa-pic-2.png" style="transform: scale(0.75) translate(10%, 75%);"/>
+    </div>
+    <div class="content placeholder"></div>
+    <div class="content">
+        <h1 class="text-right">Host MoH:AA Reborn Server</h1>
+        <p>The MoH Reborn Project has been initiated to revitalize the MoH: Allied Assault game.</p>
+        <p>Its corner stone is an unofficial patch, created by the xNULL community, that has been in active development for over 10 years.</p>
+        <a
+                style="float: right;"
+                href="/welcome"
+                title="Learn more"
+                class="md-button"
+        >
+            Learn more
+        </a>
+        <a
+                style="float: right;"
+                href="/getting-started/host-your-own-server"
+                title="Host MoH:AA Reborn Server - Get started"
+                class="md-button md-button--primary"
+        >
+            Get started
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
