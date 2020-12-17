@@ -30,4 +30,4 @@ which is also extended by plugins that come with "MkDocs" or "Material for MkDoc
 
 ## Contributing
 
-Please see our [Contributing Guide](CONTRIBUTING.MD)
+Please see our [Contributing Guide](.github/CONTRIBUTING.MD)
