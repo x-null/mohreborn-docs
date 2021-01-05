@@ -78,6 +78,32 @@ basic configuration.
 !!! note
     It is important that you keep the original files and just rename them, otherwise the server will not work. 
 
+### Docker
+
+#### Linux version
+
+You can use the following pull command to pull the docker image:
+```
+docker pull appelpitje/mohaa-server:AA-Reborn
+```
+
+To run a container, you can use:
+```
+docker run -p 12203:12203/udp -p 12300:12300/udp appelpitje/mohaa-server:AA-Reborn
+```
+
+#### Windows version
+
+You can use the following pull command to pull the docker image:
+```
+docker pull appelpitje/mohaa-server:AA-Reborn-win32
+```
+
+To run a container, you can use:
+```
+docker run -p 12203:12203/udp -p 12300:12300/udp appelpitje/mohaa-server:AA-Reborn-win32
+```
+
 ### Troubleshooting
 
 If your server crashes after installation, it can be caused by incompatible MoH:AA binary files versions.
