@@ -35,5 +35,28 @@ This will however require a bit more technical knowledge.
 
 ### Hosts redirection
 
+You can edit your hosts file on your computer. The file will have priority over your DNS server.
+We will override master.x-null.net to the xNULL master server.
+
+#### Windows
+
+Go to: `%SystemRoot%\system32\drivers\etc\`
+
+Open file called `hosts` in your favourite text editor (Notepad is enough)
+Add the following line to the bottom of the file: 
+```
+5.104.78.162 master.gamespy.com
+```
+Save the file and launch MOHAA, you should now see servers in the serverlist.
+
+#### Linux, MacOS
+
+Open the file: `/etc/hosts` in your favourite text editor
+Add the following line to the bottom of the file: 
+```
+5.104.78.162 master.gamespy.com
+```
+Save the file and launch MOHAA, you should now see servers in the serverlist.
+
 ### Manual executable patching with hex editor
 
