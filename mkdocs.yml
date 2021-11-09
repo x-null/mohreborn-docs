@@ -15,8 +15,9 @@ copyright: Copyright &copy; 2020 xNULL Development
 # Page tree
 nav:
   - 'Home': index.md
-  - 'Welcome': welcome.md
-  - 'Project overview': project-overview.md
+  - 'Project overview':
+    - 'Welcome': welcome.md
+    - 'History & Credits': history-and-credits.md
   - 'Getting started':
     - 'Play online': getting-started/play-online.md
     - 'Host your own server': getting-started/host-your-own-server.md
@@ -46,6 +47,8 @@ nav:
         - 'Extended scripting': features/modder/extended-scripting.md
         - 'Event system': features/modder/event-system.md
 
+  - 'Downloads': downloads.md
+
 # Configuration
 theme:
   name: material
@@ -61,7 +64,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
-    - tabs
+    - navigation.tabs
 
 extra_css:
   - styles/extra.css

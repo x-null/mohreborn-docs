@@ -16,7 +16,7 @@ basic configuration.
 
 **Steps**
 
-- Download latest Linux patch version from [HERE](http://www.x-null.net/) and unzip it.
+- Download latest Linux patch version from [HERE](../downloads.md#linux) and unzip it.
 - **Make a backup of your existing server**.
   
     There are only a couple of files changed by the patch,
@@ -53,7 +53,7 @@ basic configuration.
 
 **Steps**
 
-- Download latest Windows patch version from [HERE](http://www.x-null.net/) and unzip it.
+- Download latest Windows patch version from [HERE](../downloads.md#windows) and unzip it.
 - **Make a backup of your existing server**.
   
     There are only a couple of files changed by the patch,
@@ -80,27 +80,34 @@ basic configuration.
 
 ### Docker
 
+You can run game server as Docker container. Provided images come with preinstalled Reborn patch and other fixes.
+They also include all required OS libraries, so it's super easy to run your server with single command.
+
 #### Linux version
 
 You can use the following pull command to pull the docker image:
-```
+
+```bash
 docker pull appelpitje/mohaa-server:AA-Reborn
 ```
 
 To run a container, you can use:
-```
+
+```bash
 docker run -p 12203:12203/udp -p 12300:12300/udp appelpitje/mohaa-server:AA-Reborn
 ```
 
 #### Windows version
 
 You can use the following pull command to pull the docker image:
-```
+
+```bash
 docker pull appelpitje/mohaa-server:AA-Reborn-win32
 ```
 
 To run a container, you can use:
-```
+
+```bash
 docker run -p 12203:12203/udp -p 12300:12300/udp appelpitje/mohaa-server:AA-Reborn-win32
 ```
 
@@ -109,7 +116,7 @@ docker run -p 12203:12203/udp -p 12300:12300/udp appelpitje/mohaa-server:AA-Rebo
 If your server crashes after installation, it can be caused by incompatible MoH:AA binary files versions.
 You may want to replace them with binaries that are known to be working with the patch.
 
-You can find them and download from [HERE](http://www.x-null.net/patch/CompatibleBinaries.zip%7CCompatible).
+You can find them and download from [HERE](../downloads.md#compatible-binaries).
 
 If you tried compatible binaries and are still experiencing problems - don't hesitate and contact us using any available
 channel (see: [xNULL Community](../index.md#xnull-community)).
