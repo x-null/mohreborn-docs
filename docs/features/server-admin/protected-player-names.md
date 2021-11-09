@@ -12,8 +12,6 @@ This functionality is controlled with following commands:
 - [unprotname](#unprotname)
 - [listprotnames](#listprotnames)
 
-TODO TODO TODO TODO TODO TODO TODO
-
 !!! hint
     All listed commands work via RCon.
     They can be used by admin accounts, by prefixing them with **ad_** keyword.
