@@ -1,5 +1,7 @@
 # Welcome to MoH Reborn documentation
 
+Documentation is hosted at [mohreborn.com](https://mohreborn.com)
+
 For documentation on how to develop and extend it visit:
 * [MkDocs](https://www.mkdocs.org)
 * [Material for MkDocs ](https://squidfunk.github.io/mkdocs-material)
