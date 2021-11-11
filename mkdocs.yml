@@ -65,6 +65,7 @@ theme:
     code: Roboto Mono
   features:
     - navigation.tabs
+    - navigation.top
 
 extra_css:
   - styles/extra.css
