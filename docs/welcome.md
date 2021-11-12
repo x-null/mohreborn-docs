@@ -13,6 +13,13 @@ during all those years (for example GameSpy's masterserver replacement).
 
 We hope that users, which are both server admins and players, will find it useful.
 
+You may be interested in:
+
+- [Fix in-game browser and play online](getting-started/play-online.md)
+- [Host MoH server with Reborn 1.12 patch](getting-started/host-your-own-server.md)
+
+or the rest of resources we prepared for you.
+
 ## xNULL Community
 
 xNULL is a community of gamers, modders, server admins, artists, developers and other enthusiasts who
