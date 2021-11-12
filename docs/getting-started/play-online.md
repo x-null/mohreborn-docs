@@ -27,6 +27,13 @@ to get list of all online servers and show them in the in-game server browser.
     Game Launcher is not ready yet.
     You can help us develop it by contributing to: [MoH Reborn Launcher](https://github.com/x-null/mohreborn-launcher)
 
+## Game Browser Fixer
+
+You can also patch your game executables with Game Browser Fixer, which you can find and read
+about [HERE](https://www.x-null.net/forums/threads/2159-Medal-of-Honor-Game-Server-Browser-Fixer){: target="_blank"}.
+
+This solution works only for Windows users.
+
 ## Alternative solutions
 
 If you don't want to install and use Reborn Game Launcher (which we highly recommend),
