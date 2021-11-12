@@ -36,6 +36,13 @@ You can also find many members of our community in other places, like:
 - [MoH Amalgamated Allied Assault Alliance](http://www.mohaaaa.co.uk)
 - [r/MOHAA](https://www.reddit.com/r/MOHAA/)
 
+If you want to host your own MoH:AA/SH/BT server without a hassle, you may want to consider using
+game hosting services provided by one of our core maintainers - **own3mall**:
+
+- [WeBeHostiN](https://webehostin.com/games.php)
+    
+    [![WeBeHostiN](https://webehostin.com/images/public/webehostin_simple.jpg)](https://webehostin.com/games.php){: target="_blank"}
+
 ## Contributing
 
 If you would like to contribute to this documentation, you can do this on several levels:

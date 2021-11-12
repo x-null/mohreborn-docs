@@ -348,3 +348,12 @@ seta sv_remotetoolip "127.0.0.1"
 //** GetStatus/GetInfo Anti Flood Protection 1=on 0=off
 seta sv_packetantiflood 1
 ```
+
+## Game hosting services
+
+If you don't feel like renting a VPS or hosting from home 
+and want to host your own MoH:AA/SH/BT server without a hassle, you can consider using
+game hosting services offered by various companies.
+
+One of our core maintainers - **own3mall**, owns such a company and can host MoH:AA/SH/BT server
+for you: [WeBeHostiN](https://webehostin.com/games.php){: target="_blank"}.
