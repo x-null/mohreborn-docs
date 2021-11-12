@@ -1,6 +1,6 @@
 # Project information
 site_name: Medal of Honor Reborn
-site_description: Documentation for Medal of Honor Reborn Community Patch
+site_description: Medal of Honor Reborn Community Patch
 site_author: Michał 'Razo[R]apiD' Knieć & xNULL Development contributors
 site_url: https://x-null.github.io/mohreborn-docs/
 
@@ -21,9 +21,9 @@ nav:
   - 'Getting started':
     - 'Play online': getting-started/play-online.md
     - 'Host your own server': getting-started/host-your-own-server.md
-    - 'Player Guide': getting-started/player-guide.md
-    - 'Server Admin Guide': getting-started/server-admin-guide.md
-    - 'Modding Guide': getting-started/modding-guide.md
+    - 'Player guides': getting-started/player-guides.md
+    - 'Server Admin guides': getting-started/server-admin-guides.md
+    - 'Modding guides': getting-started/modding-guides.md
 
   - 'Features':
     - 'Features Overview': features/features-overview.md
