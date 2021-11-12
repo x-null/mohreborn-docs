@@ -38,6 +38,8 @@ invented a lot of original ways of hacking the engine or for fighting with cheat
 - PurpleElephant
 - Armageddon
 - Heatsinkbod
+- Smithy
+- Zappa
 - Todesengel
 - Criminal / Crimewavez
 - Dax
