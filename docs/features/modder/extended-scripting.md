@@ -1690,7 +1690,7 @@ or
 local.entity = getentity( 0 )
 ```
 
-Entities with entity number between 0 and sv_maxclient are reserved for players and thus getentity( 0 ) is equal to $player[0]
+Entities with entity number between 0 and (sv_maxclients - 1) are reserved for players, and thus `getentity 0` is equal to the client number 0 on the "status" list.
 
 ### stuffsrv
 
