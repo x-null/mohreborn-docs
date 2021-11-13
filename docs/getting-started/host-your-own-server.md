@@ -182,7 +182,7 @@ seta g_logSync "1"
 seta sv_chatter 1
 
 //seta developer 0 //1,2,3 modes available 
-seta sv_debuggamespy 0	//information gamespy
+seta sv_debuggamespy 0 //information gamespy
 
 //*************** Extras ********************
 seta sv_maxPing "0" //disactivated, use High Ping Limiter System
@@ -280,7 +280,7 @@ seta dmroundlimit "0"
 //*******************************************
 //************* Maprotatin / Map ************
 //seta sv_maplist "obj/obj_team1 obj/obj_team2 obj/obj_team4 "
-//map obj/obj_team1	//starts with hunt
+//map obj/obj_team1 //starts with hunt
 
 seta sv_maplist "obj/obj_team1 obj/obj_team2 obj/obj_team4"
 map obj/obj_team2   //= stalingrad

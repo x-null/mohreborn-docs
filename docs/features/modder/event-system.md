@@ -169,7 +169,7 @@ Callback handler:
 
 ```
 damage local.target local.inflictor local.damage local.position local.direction local.normal local.knockback local.damageflags local.meansofdeath local.location local.entity:
-	// your code here
+    // your code here
 end
 ```
 
@@ -177,7 +177,7 @@ or
 
 ```
 main local.target local.inflictor local.damage local.position local.direction local.normal local.knockback local.damageflags local.meansofdeath local.location local.entity:
-	// you code here
+    // you code here
 end
 ```
 
@@ -217,7 +217,7 @@ Callback handler:
 
 ```
 kill local.attacker local.damage local.inflictor local.position local.direction local.normal local.knockback local.damageflags local.meansofdeath local.location local.player:
-	// your code here
+    // your code here
 end
 ```
 
@@ -225,7 +225,7 @@ or
 
 ```
 main local.attacker local.damage local.inflictor local.position local.direction local.normal local.knockback local.damageflags local.meansofdeath local.location local.player:
-	// you code here
+    // you code here
 end
 ```
 

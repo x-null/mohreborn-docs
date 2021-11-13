@@ -16,20 +16,20 @@ admin account can do, by combining those permissions.
 | Name                    | Numeric Value | Allowed commands                                                               | Description                                                                 |
 |-------------------------|---------------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | ACCESSLEVEL_PROTECTNAME | 1             | ad_protname, ad_unprotname, ad_listprotnames                                   | One can protect/unprotect and list protected names                          |
-| ACCESSLEVEL_MAPCHANGE	  | 2             | ad_map                                                                         | One can change maps                                                         |
+| ACCESSLEVEL_MAPCHANGE   | 2             | ad_map                                                                         | One can change maps                                                         |
 | ACCESSLEVEL_RESTART     | 4             | ad_restart                                                                     | One can restart the game                                                    |
 | ACCESSLEVEL_GAMETYPE    | 8             | ad_gametype                                                                    | One can change gametype                                                     |
 | ACCESSLEVEL_FRAGLIMIT   | 16            | ad_fraglimit                                                                   | One can change frag limit                                                   |
 | ACCESSLEVEL_TIMELIMIT   | 16            | ad_timelimit                                                                   | One can change time limit                                                   |
 | ACCESSLEVEL_KICK        | 32            | ad_kick, ad_kickr, ad_clientkick, ad_clientkickr                               | One can kick players from game                                              |
-| ACCESSLEVEL_BADCMD      | 64            | wuss, tele, noclip, dog	                                                       | One can use bad commands, for admin debug/scripting purposes                |
+| ACCESSLEVEL_BADCMD      | 64            | wuss, tele, noclip, dog                                                        | One can use bad commands, for admin debug/scripting purposes                |
 | ACCESSLEVEL_BAN         | 128           | ad_banip, ad_banipr, ad_banid, ad_banidr, ad_banname, ad_listips, ad_listnames | One can ban and list players IPs/names                                      |
-| ACCESSLEVEL_REMOVEBAN   | 256           | ad_unbanip, ad_unbanname, ad_listips, ad_listnames	                           | One can unban and list players IPs/names                                    |
+| ACCESSLEVEL_REMOVEBAN   | 256           | ad_unbanip, ad_unbanname, ad_listips, ad_listnames                             | One can unban and list players IPs/names                                    |
 | ACCESSLEVEL_CHATFILTER  | 512           | ad_chatfilteradd, ad_chatfilterremove, ad_listchatfilter, ad_dischat           | One can add/remove/list words in chat filters list and disable players chat |
-| ACCESSLEVEL_ADMINPROCMD | 1024          | Not used	                                                                   | Unused in this version                                                      |
-| ACCESSLEVEL_LISTADMINS  | 2048          | ad_listadmins	                                                               | One can view a list of ClientAdmins                                         |
-| ACCESSLEVEL_RCON        | 4096          | ad_rcon	                                                                       | One can have a full access to RCon console                                  |
-| ACCESSLEVEL_MAX         | 16383         | All above commands	                                                           | One has all rights                                                          |
+| ACCESSLEVEL_ADMINPROCMD | 1024          | Not used                                                                       | Unused in this version                                                      |
+| ACCESSLEVEL_LISTADMINS  | 2048          | ad_listadmins                                                                  | One can view a list of ClientAdmins                                         |
+| ACCESSLEVEL_RCON        | 4096          | ad_rcon                                                                        | One can have a full access to RCon console                                  |
+| ACCESSLEVEL_MAX         | 16383         | All above commands                                                             | One has all rights                                                          |
 
 ### Creating, editing and deleting accounts
 
