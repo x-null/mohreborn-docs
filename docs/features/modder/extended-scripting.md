@@ -5,31 +5,6 @@ Reborn patch has introduced a number of new scripting commands available for peo
 ## File Handlers
 ScriptThread -> Listener -> Class
 
-### fopen
-
-fopen( String filename, String accessType )
-
-Opens file. Example:
-
-```
-local.file = fopen "main/config.txt" "a+"
-```
-
-or
-
-```
-local.file = fopen("main/config.txt" "a+")
-```
-
-Result:
-
-```
-Command returns file handle that is needed for identification and further operations on this file.
-```
-
-!!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fopen
-
 ### fclose
 
 fclose( Integer filehandle )
@@ -57,6 +32,29 @@ On failure, EOF is returned.
 !!! important
     You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fclose
 
+### fcopy
+
+fcopy( String filename, String copyname )
+
+Creates a copy of file.
+Example:
+
+```
+local.ret = fcopy local.filename local.copyname
+```
+
+Result:
+
+```
+If the file is successfully copied, a zero value is returned.
+When function fails to open original file, a -1 value is returned.
+When function fails to create a second file, a -2 value is returned.
+When function fails during data copy process, a -3 value is returned.
+```
+
+!!! important
+    You can open only 32 files at once.
+
 ### feof
 
 feof( Integer filehandle )
@@ -83,149 +81,90 @@ Otherwise, a zero value is returned.
 !!! important
     You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - feof
 
-### fseek
+### ferror
 
-fseek( Integer filehandle, Integer offset, Integer origin )
+ferror( Integer filehandle )
 
-Sets the position indicator associated with the file to a new position
-defined by adding offset to a reference position specified by origin.
+Checks if the error indicator associated with file is set, returning a value different from zero if it is.
 
 Example:
 
 ```
-local.return = fseek local.file 154 0
+local.ret = ferror local.file
 ```
 
 or
 
 ```
-local.return = fseek(local.file 154 0)
-```
-
-Where origin:
-
-- 0 = SEEK_SET
-- 1 = SEEK_CUR
-- 2 = SEEK_END
-
-Result:
-
-```
-If successful, the function returns a zero value.
-Otherwise, it returns nonzero value.
-```
-
-!!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fseek
-
-### ftell
-
-ftell( Integer filehandle )
-
-Returns the current value of the position indicator of the file. Example:
-
-```
-local.return = ftell local.file
-```
-
-or
-
-```
-local.return = ftell(local.file)
+local.ret = ferror(local.file)
 ```
 
 Result:
 
 ```
-On success, the current value of the position indicator is returned.
-If an error occurs, -1 is returned.
+If the error indicator associated with the file was set, the function returns a nonzero value.
+Otherwise, it returns a zero value.
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ftell
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ferror
 
-### frewind
+### fexists
 
-frewind( Integer filehandle )
+fexists( String filename )
 
-Sets the position indicator associated with file to the beginning of the file.
+Checks if file with given filename exists.
 Example:
 
 ```
-local.return = frewind local.file
+local.ret = fexists "folder/folder2/file.txt"
 ```
 
 or
 
 ```
-local.return = frewind(local.file)
+local.ret = fexists("folder/folder2/file.txt")
 ```
 
 Result:
 
 ```
-none
+If file exists, function returns 1. Otherwise it returns 0.
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - rewind
+    You can open only 32 files at once.
 
-### foutc
+### fflush
 
-foutc( Integer filehandle, String character )
+fflush( Integer filehandle )
 
-Writes a character to the file and advances the position indicator.
+If the given file was open for writing and the last i/o operation was an output operation, any unwritten data in the output buffer is written to the file.
+
+!!! note
+    The file remains open after this command.
+
 Example:
 
 ```
-local.return = fputc local.file "a"
+local.ret = fflush local.file
 ```
 
 or
 
 ```
-local.return = fputc(local.file "a")
+local.ret = fflush(local.file)
 ```
 
 Result:
 
 ```
-If there are no errors, the same character that has been written is returned.
+A zero value indicates success.
 If an error occurs, EOF is returned and the error indicator is set.
 ```
 
-You have to cast returned value to char.
-If you pass longer string, only first character will be written to file.
-
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fputc
-
-### fputs
-
-fputs( Integer filehandle, String text )
-
-Writes text to the file and advances the position indicator.
-Example:
-
-```
-local.return = fputs local.file "This is example"
-```
-
-or
-
-```
-local.return = fputs(local.file "This is example")
-```
-
-Result:
-
-```
-On success, a non-negative value is returned.
-On error, the function returns EOF.
-```
-
-!!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fputs
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fflush
 
 ### fgetc
 
@@ -288,92 +227,112 @@ If a memory allocation error occurs, -1 is returned.
 !!! important
     You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fgets
 
-### ferror
+### flist
 
-ferror( Integer filehandle )
+flist( String path, String extension, Integer scanSubDirectories )
 
-Checks if the error indicator associated with file is set, returning a value different from zero if it is.
+Returns a list (array) of files with given extension located in given path. Function handles .pk3 folder structure and normal system directories. When scanSubDirectories equals 1, function will include subdirectories located under directory path.
+
+Extension needs to have "." (dot) included. Otherwise it will act as filter.
 
 Example:
 
 ```
-local.ret = ferror local.file
-```
-
-or
-
-```
-local.ret = ferror(local.file)
+local.list = flist local.path local.extension local.scanSubDirectories
 ```
 
 Result:
 
 ```
-If the error indicator associated with the file was set, the function returns a nonzero value.
-Otherwise, it returns a zero value.
-```
-
-!!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ferror
-
-### fflush
-
-fflush( Integer filehandle )
-
-If the given file was open for writing and the last i/o operation was an output operation, any unwritten data in the output buffer is written to the file.
-
-!!! note
-    The file remains open after this command.
-
-Example:
-
-```
-local.ret = fflush local.file
-```
-
-or
-
-```
-local.ret = fflush(local.file)
-```
-
-Result:
-
-```
-A zero value indicates success.
-If an error occurs, EOF is returned and the error indicator is set.
-```
-
-!!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fflush
-
-### fexists
-
-fexists( String filename )
-
-Checks if file with given filename exists.
-Example:
-
-```
-local.ret = fexists "folder/folder2/file.txt"
-```
-
-or
-
-```
-local.ret = fexists("folder/folder2/file.txt")
-```
-
-Result:
-
-```
-If file exists, function returns 1. Otherwise it returns 0.
+List with filenames and their paths found.
 ```
 
 !!! important
     You can open only 32 files at once.
 
-###freadall
+### fopen
+
+fopen( String filename, String accessType )
+
+Opens file. Example:
+
+```
+local.file = fopen "main/config.txt" "a+"
+```
+
+or
+
+```
+local.file = fopen("main/config.txt" "a+")
+```
+
+Result:
+
+```
+Command returns file handle that is needed for identification and further operations on this file.
+```
+
+!!! important
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fopen
+
+### fputc
+
+fputc( Integer filehandle, String character )
+
+Writes a character to the file and advances the position indicator.
+Example:
+
+```
+local.return = fputc local.file "a"
+```
+
+or
+
+```
+local.return = fputc(local.file "a")
+```
+
+Result:
+
+```
+If there are no errors, the same character that has been written is returned.
+If an error occurs, EOF is returned and the error indicator is set.
+```
+
+You have to cast returned value to char.
+If you pass longer string, only first character will be written to file.
+
+!!! important
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fputc
+
+### fputs
+
+fputs( Integer filehandle, String text )
+
+Writes text to the file and advances the position indicator.
+Example:
+
+```
+local.return = fputs local.file "This is example"
+```
+
+or
+
+```
+local.return = fputs(local.file "This is example")
+```
+
+Result:
+
+```
+On success, a non-negative value is returned.
+On error, the function returns EOF.
+```
+
+!!! important
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fputs
+
+### freadall
 
 freadall( Integer filehandle )
 
@@ -403,22 +362,22 @@ Function returns file content as string.
 !!! important
     You can open only 32 files at once.
 
-### fsaveall
+### freadpak
 
-fsaveall( Integer filehandle, String content )
+freadpak( String filename )
 
-Writes string content to file at once. File has to be opened in binary mode (wb, wb+, ab). The content will start to be saved from the current file position.
-
+Reads file located inside .pk3 file in text mode and returns it's content as string.
 Example:
 
 ```
-local.ret = fsaveall local.file local.content
+local.content = freadpak local.filename
 ```
 
 Result:
 
 ```
-Function returns number of character written to file or -1 if content is NULL.
+If the file is successfully read, function returns a string with it's content.
+When function fails to find, open or read a file from .pk3, a -1 value is returned.
 ```
 
 !!! important
@@ -466,72 +425,114 @@ On failure, a nonzero value is returned and the errno variable is set to the cor
 !!! important
     You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - rename
 
-### fcopy
+### frewind
 
-fcopy( String filename, String copyname )
+frewind( Integer filehandle )
 
-Creates a copy of file.
+Sets the position indicator associated with file to the beginning of the file.
 Example:
 
 ```
-local.ret = fcopy local.filename local.copyname
+local.return = frewind local.file
+```
+
+or
+
+```
+local.return = frewind(local.file)
 ```
 
 Result:
 
 ```
-If the file is successfully copied, a zero value is returned.
-When function fails to open original file, a -1 value is returned.
-When function fails to create a second file, a -2 value is returned.
-When function fails during data copy process, a -3 value is returned.
+none
 ```
 
 !!! important
-    You can open only 32 files at once.
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - rewind
 
-### freadpak
+### fsaveall
 
-freadpak( String filename )
+fsaveall( Integer filehandle, String content )
 
-Reads file located inside .pk3 file in text mode and returns it's content as string.
+Writes string content to file at once. File has to be opened in binary mode (wb, wb+, ab). The content will start to be saved from the current file position.
+
 Example:
 
 ```
-local.content = freadpak local.filename
+local.ret = fsaveall local.file local.content
 ```
 
 Result:
 
 ```
-If the file is successfully read, function returns a string with it's content.
-When function fails to find, open or read a file from .pk3, a -1 value is returned.
+Function returns number of character written to file or -1 if content is NULL.
 ```
 
 !!! important
     You can open only 32 files at once.
 
-### flist
+### fseek
 
-flist( String path, String extension, Integer scanSubDirectories )
+fseek( Integer filehandle, Integer offset, Integer origin )
 
-Returns a list (array) of files with given extension located in given path. Function handles .pk3 folder structure and normal system directories. When scanSubDirectories equals 1, function will include subdirectories located under directory path.
-
-Extension needs to have "." (dot) included. Otherwise it will act as filter.
+Sets the position indicator associated with the file to a new position
+defined by adding offset to a reference position specified by origin.
 
 Example:
 
 ```
-local.list = flist local.path local.extension local.scanSubDirectories
+local.return = fseek local.file 154 0
+```
+
+or
+
+```
+local.return = fseek(local.file 154 0)
+```
+
+Where origin:
+
+- 0 = SEEK_SET
+- 1 = SEEK_CUR
+- 2 = SEEK_END
+
+Result:
+
+```
+If successful, the function returns a zero value.
+Otherwise, it returns nonzero value.
+```
+
+!!! important
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fseek
+
+### ftell
+
+ftell( Integer filehandle )
+
+Returns the current value of the position indicator of the file. Example:
+
+```
+local.return = ftell local.file
+```
+
+or
+
+```
+local.return = ftell(local.file)
 ```
 
 Result:
 
 ```
-List with filenames and their paths found.
+On success, the current value of the position indicator is returned.
+If an error occurs, -1 is returned.
 ```
 
 !!! important
-    You can open only 32 files at once.
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ftell
+
 
 ## iHuddraws
 
@@ -726,21 +727,21 @@ ihuddraw_virtualsize( $player[1] 15 1 )
 
 ScriptThread -> Listener -> Class
 
-### netname
+### getclientnum
 
-netname( Entity player )
+getclientnum( Entity player )
 
-Gets player's name and returns it as string.
+Gets player's client number and returns it as integer.
 Example:
 
 ```
-local.player_name = netname $player[1]
+local.player_clnum = getclientnum $player[1]
 ```
 
 or
 
 ```
-local.player_name = netname( $player[1] )
+local.player_clnum = getclientnum( $player[1] )
 ```
 
 ### getip
@@ -783,55 +784,26 @@ or
 local.player_ping = getping( $player[1] )
 ```
 
-### getclientnum
+### netname
 
-getclientnum( Entity player )
+netname( Entity player )
 
-Gets player's client number and returns it as integer.
+Gets player's name and returns it as string.
 Example:
 
 ```
-local.player_clnum = getclientnum $player[1]
+local.player_name = netname $player[1]
 ```
 
 or
 
 ```
-local.player_clnum = getclientnum( $player[1] )
+local.player_name = netname( $player[1] )
 ```
 
 ## Player 
 
 Player (player) -> Sentient -> Animate -> Entity -> SimpleEntity -> Listener -> Class
-
-### addkills
-
-addkills( Integer kills )
-
-Adds number of kills to player. (Can be also negative)
-Example:
-
-```
-$player[1] addkills 5
-```
-
-or
-
-```
-$player[1] addkills -5
-```
-
-Result:
-
-```
-If player had 8 kills, he will have 13 kills
-```
-
-or
-
-```
-If player had 8 kills, he will have 3 kills
-```
 
 ### adddeaths
 
@@ -862,77 +834,87 @@ or
 If player had 8 deaths, he will have 3 deaths
 ```
 
-### getkills
+### addkills
 
-getkills( void )
+addkills( Integer kills )
 
-Gets number of player's kills and returns it as integer
+Adds number of kills to player. (Can be also negative)
 Example:
 
 ```
-local.player_kills = $player[1] getkills
+$player[1] addkills 5
 ```
 
 or
 
 ```
-local.player_kills = $player[1] getkills( )
+$player[1] addkills -5
 ```
 
 Result:
 
 ```
-Number of players that this player has killed.
-```
-
-### getdeaths
-
-getdeaths( void )
-
-Gets number of player's deaths and returns it as integer.
-Example:
-
-```
-local.player_deaths = $player[1] getdeaths
+If player had 8 kills, he will have 13 kills
 ```
 
 or
 
 ```
-local.player_deaths = $player[1] getdeaths( )
+If player had 8 kills, he will have 3 kills
+```
+
+### bindweap
+
+bindweap( Entity weapon )
+
+Binds weapon to player. Sets him as weapon owner.
+2nd use of the command will unbind the weapon from player.
+
+Example:
+
+```
+$player[1] bindweap local.weapon
+local.weapon anim fire
+$player[1] bindweap local.weapon
 ```
 
 Result:
 
 ```
-Number of player's deaths.
+Sets player as weapon owner.
+```
+
+!!! warning
+    This is sort of a hack&trick scripting command. It should only be used by experienced users and only like shown in the example
+    - just before firing the weapon and just after, to unbind it from the player. Otherwise you can have errors,
+    weapon model glued to player, or server crashes. It should be used only for some kind of remote turrets etc.
+
+### getactiveweap
+
+getactiveweap( Integer weaponhand )
+
+Gets currently active weapon from player's hand of given index
+Example:
+
+```
+local.weapon = $player[1] getactiveweap 0
+```
+
+or
+
+```
+local.weapon = $player[1] getactiveweap(0)
+```
+
+Result:
+
+```
+Weapon entity.
 ```
 
 !!! important
-    Before using this function, check game type that is currently running. When g_gametype is 3 or 4, deaths aren't counted and result of this function will equal to kills amount that player has
-
-### isadmin
-
-isadmin( void )
-
-Checks if player is currently logged in as server administrator.
-Example:
-
-```
-local.admin = $player[1] isadmin
-```
-
-or
-
-```
-local.admin = $player[1] isadmin( )
-```
-
-Result:
-
-```
-Returns 1 if player is logged in as administrator, otherwise it returns 0.
-```
+    You can use weaponhand index from 0-2 range, but it's preffered to use only 0 index,
+    because other indexes my return false values that might crash server
 
 ### getconnstate
 
@@ -961,31 +943,99 @@ Returns integer value:
 4 = CS_ACTIVE - player is in game and can start playing
 ```
 
-### getactiveweap
+### getdeaths
 
-getactiveweap( Integer weaponhand )
+getdeaths( void )
 
-Gets currently active weapon from player's hand of given index
+Gets number of player's deaths and returns it as integer.
 Example:
 
 ```
-local.weapon = $player[1] getactiveweap 0
+local.player_deaths = $player[1] getdeaths
 ```
 
 or
 
 ```
-local.weapon = $player[1] getactiveweap(0)
+local.player_deaths = $player[1] getdeaths( )
 ```
 
 Result:
 
 ```
-Weapon entity.
+Number of player's deaths.
 ```
 
 !!! important
-    You can use weaponhand index from 0-2 range, but it's preffered to use only 0 index, because other indexes my return false values that might crash server
+    Before using this function, check game type that is currently running.
+    When g_gametype is 3 or 4, deaths aren't counted and result of this function will equal to kills amount that player has
+
+### getkills
+
+getkills( void )
+
+Gets number of player's kills and returns it as integer
+Example:
+
+```
+local.player_kills = $player[1] getkills
+```
+
+or
+
+```
+local.player_kills = $player[1] getkills( )
+```
+
+Result:
+
+```
+Number of players that this player has killed.
+```
+
+### .inventory
+
+.inventory( void )
+
+Returns player's inventory
+Example:
+
+```
+local.inventory= $player[1].inventory
+
+local.inventorySize = $player[1].inventory.size
+
+local.item1 = $player[1].inventory[0]
+```
+
+Result:
+
+```
+Array with entities in player's inventory. You can assign it to a variable or access directly.
+```
+
+### isadmin
+
+isadmin( void )
+
+Checks if player is currently logged in as server administrator.
+Example:
+
+```
+local.admin = $player[1] isadmin
+```
+
+or
+
+```
+local.admin = $player[1] isadmin( )
+```
+
+Result:
+
+```
+Returns 1 if player is logged in as administrator, otherwise it returns 0.
+```
 
 ### .secfireheld
 
@@ -1023,115 +1073,9 @@ Result:
 String with player's userinfo
 ```
 
-### .inventory
-
-.inventory( void )
-
-Returns player's inventory
-Example:
-
-```
-local.inventory= $player[1].inventory
-
-local.inventorySize = $player[1].inventory.size
-
-local.item1 = $player[1].inventory[0]
-```
-
-Result:
-
-```
-Array with entities in player's inventory. You can assign it to a variable or access directly.
-```
-
-### bindweap
-
-bindweap( Entity weapon )
-
-Binds weapon to player. Sets him as weapon owner.
-2nd use of the command will unbind the weapon from player.
-
-Example:
-
-```
-$player[1] bindweap local.weapon
-local.weapon anim fire
-$player[1] bindweap local.weapon
-```
-
-Result:
-
-```
-Sets player as weapon owner.
-```
-
-!!! warning
-    This is sort of a hack&trick scripting command. It should only be used by experienced users and only like shown in the example - just before firing the weapon and just after, to unbind it from the player. Otherwise you can have errors, weapon model glued to player, or server crashes. It should be used only for some kind of remote turrets etc.
-
 ## Maths
 
 ScriptThread -> Listener -> Class
-
-### cos
-
-cos( Float x )
-
-Returns the cosine of an angle of x radians.
-
-Example:
-
-```
-local.result = cos local.x
-```
-
-Result:
-
-```
-Cosine of x.
-```
-
-!!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cos
-
-### sin
-
-sin( Float x )
-
-Returns the sine of an angle of x radians.
-Example:
-
-```
-local.result = cos local.x
-```
-
-Result:
-
-```
-Cosine of x.
-```
-
-!!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cos
-
-### tan
-
-tan( Float x )
-
-Returns the tangent of an angle of x radians.
-Example:
-
-```
-local.result = tan local.x
-```
-
-Result:
-
-```
-Tangent of x.
-```
-
-!!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - tan
 
 ### acos
 
@@ -1219,6 +1163,47 @@ Principal arc tangent of y/x, in the interval [-pi,+pi] radians.
 !!! important
     This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - atan2
 
+### ceil
+
+ceil( Float x )
+
+Returns the smallest integral value that is not less than x.
+Example:
+
+```
+local.result = ceil local.x
+```
+
+Result:
+
+```
+The smallest integral value not less than x.
+```
+
+!!! important
+    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ceil
+
+### cos
+
+cos( Float x )
+
+Returns the cosine of an angle of x radians.
+
+Example:
+
+```
+local.result = cos local.x
+```
+
+Result:
+
+```
+Cosine of x.
+```
+
+!!! important
+    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cos
+
 ### cosh
 
 cosh( Float x )
@@ -1238,46 +1223,6 @@ Hyperbolic cosine of x.
 
 !!! important
     This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cosh
-
-### sinh
-
-sinh( Float x )
-
-Returns the hyperbolic sine of x.
-Example:
-
-```
-local.result = sinh local.x
-```
-
-Result:
-
-```
-Hyperbolic sine of x.
-```
-
-!!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - sinh
-
-### tanh
-
-tanh( Float x )
-
-Returns the hyperbolic tangent of x.
-Example:
-
-```
-local.result = tanh local.x
-```
-
-Result:
-
-```
-Hyperbolic tangent of x.
-```
-
-!!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - tanh
 
 ### exp
 
@@ -1299,6 +1244,53 @@ Exponential value of x.
 
 !!! important
     This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - exp
+
+### floor
+
+floor( Float x )
+
+Returns the largest integral value that is not greater than x.
+Example:
+
+```
+local.result = floor local.x
+```
+
+Result:
+
+```
+The largest integral value not greater than x.
+```
+
+!!! important
+    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - floor
+
+### fmod
+
+fmod( Float numerator, Float denominator )
+
+Returns the floating-point remainder of numerator/denominator.
+
+The remainder of a division operation is the result of subtracting the integral quotient multiplied by the denominator from the numerator:
+
+```
+remainder = numerator - quotient * denominator
+```
+
+Example:
+
+```
+local.result = fmod local.numerator local.denominator
+```
+
+Result:
+
+```
+The remainder of dividing the arguments.
+```
+
+!!! important
+    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fmod
 
 ### frexp
 
@@ -1435,6 +1427,46 @@ The result of raising base to the power exponent.
 !!! important
     This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - pow
 
+### sin
+
+sin( Float x )
+
+Returns the sine of an angle of x radians.
+Example:
+
+```
+local.result = cos local.x
+```
+
+Result:
+
+```
+Cosine of x.
+```
+
+!!! important
+    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cos
+
+### sinh
+
+sinh( Float x )
+
+Returns the hyperbolic sine of x.
+Example:
+
+```
+local.result = sinh local.x
+```
+
+Result:
+
+```
+Hyperbolic sine of x.
+```
+
+!!! important
+    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - sinh
+
 ### sqrt
 
 sqrt( Float x )
@@ -1455,72 +1487,46 @@ Square root of x.
 !!! important
     This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - sqrt
 
-### ceil
+### tan
 
-ceil( Float x )
+tan( Float x )
 
-Returns the smallest integral value that is not less than x.
+Returns the tangent of an angle of x radians.
 Example:
 
 ```
-local.result = ceil local.x
+local.result = tan local.x
 ```
 
 Result:
 
 ```
-The smallest integral value not less than x.
+Tangent of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ceil
+    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - tan
 
-### floor
+### tanh
 
-floor( Float x )
+tanh( Float x )
 
-Returns the largest integral value that is not greater than x.
+Returns the hyperbolic tangent of x.
 Example:
 
 ```
-local.result = floor local.x
+local.result = tanh local.x
 ```
 
 Result:
 
 ```
-The largest integral value not greater than x.
+Hyperbolic tangent of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - floor
+    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - tanh
 
-### fmod
-
-fmod( Float numerator, Float denominator )
-
-Returns the floating-point remainder of numerator/denominator.
-
-The remainder of a division operation is the result of subtracting the integral quotient multiplied by the denominator from the numerator:
-
-```
-remainder = numerator - quotient * denominator
-```
-
-Example:
-
-```
-local.result = fmod local.numerator local.denominator
-```
-
-Result:
-
-```
-The remainder of dividing the arguments.
-```
-
-!!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fmod
 
 ## Events
 
@@ -1591,6 +1597,36 @@ Please see Reborn Events System documentation for further information.
 
 ScriptThread -> Listener -> Class
 
+### getdate
+
+getdate( String format )
+
+Gets current date in format given as parameter.
+Example:
+
+```
+local.date = getdate "%D"
+```
+
+or
+
+```
+local.date = getdate("%D")
+```
+
+Result:
+
+```
+String with current date.
+
+04/06/18
+```
+
+Formatting options:
+http://www.cplusplus.com/reference/ctime/strftime/
+
+Max format length is 512 characters.
+
 ### gettime
 
 gettime( Integer zero )
@@ -1638,40 +1674,32 @@ Integer value that represents current time zone.
 eg. 2 = GMT +2
 ```
 
-### getdate
+## Miscellaneous
 
-getdate( String format )
+ScriptThread -> Listener -> Class
 
-Gets current date in format given as parameter.
+### conprintf
+
+conprintf( String text )
+
+Prints text to a console.
 Example:
 
 ```
-local.date = getdate "%D"
+conprintf "This can be a custom error message from the script"
 ```
 
 or
 
 ```
-local.date = getdate("%D")
+conprintf( "This can be a custom error message from the script" )
 ```
 
 Result:
 
 ```
-String with current date.
-
-04/06/18
+Text will be printed to the console.
 ```
-
-
-Formatting options:
-http://www.cplusplus.com/reference/ctime/strftime/
-
-Max format length is 512 characters.
-
-## Miscellaneous
-
-ScriptThread -> Listener -> Class
 
 ### getentity
 
@@ -1691,6 +1719,40 @@ local.entity = getentity( 0 )
 ```
 
 Entities with entity number between 0 and (sv_maxclients - 1) are reserved for players, and thus `getentity 0` is equal to the client number 0 on the "status" list.
+
+### md5file
+
+md5file( String filename )
+
+Generates MD5 checksum of file with given filename
+Example:
+
+```
+local.checksum = md5file local.filename
+```
+
+Result:
+
+```
+MD5 checksum as string.
+```
+
+### md5string
+
+md5string( String text )
+
+Generates MD5 checksum of text
+Example:
+
+```
+local.checksum = md5string local.text
+```
+
+Result:
+
+```
+MD5 checksum as string.
+```
 
 ### stuffsrv
 
@@ -1721,80 +1783,6 @@ or
 
 ```
 Server will change map to dm/mohdm1
-```
-
-### conprintf
-
-conprintf( String text )
-
-Prints text to a console.
-Example:
-
-```
-conprintf "This can be a custom error message from the script"
-```
-
-or
-
-```
-conprintf( "This can be a custom error message from the script" )
-```
-
-Result:
-
-```
-Text will be printed to the console.
-```
-
-### md5string
-
-md5string( String text )
-
-Generates MD5 checksum of text
-Example:
-
-```
-local.checksum = md5string local.text
-```
-
-Result:
-
-```
-MD5 checksum as string.
-```
-
-### md5file
-
-md5file( String filename )
-
-Generates MD5 checksum of file with given filename
-Example:
-
-```
-local.checksum = md5file local.filename
-```
-
-Result:
-
-```
-MD5 checksum as string.
-```
-
-### typeof
-
-typeof( Variable var )
-
-Gets the type of variable.
-Example:
-
-```
-local.type = typeof local.var
-```
-
-Result:
-
-```
-The type of variable returned as string (array, string, vector, listener, ...)
 ```
 
 ### traced
@@ -1911,3 +1899,20 @@ Contents:
 | CONTENTS_TRANSLUCENT   | 536870912
 | CONTENTS_TRIGGER       | 1073741824
 | CONTENTS_NODROP        | 2147483648
+
+### typeof
+
+typeof( Variable var )
+
+Gets the type of variable.
+Example:
+
+```
+local.type = typeof local.var
+```
+
+Result:
+
+```
+The type of variable returned as string (array, string, vector, listener, ...)
+```
