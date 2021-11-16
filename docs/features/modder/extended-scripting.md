@@ -1829,7 +1829,7 @@ local.trace["entity"] - <i>Entity</i> : entity that was hit by the trace
 Surface Flags:
 
 | Name                    | Value |
-|-------------------------|-------|
+|-------------------------|------:|
 | SURF_NODAMAGE           | 1
 | SURF_SLICK              | 2
 | SURF_SKY                | 4
@@ -1859,7 +1859,7 @@ Surface Flags:
 Masks:
 
 | Name                    | Value |
-|-------------------------|-------|
+|-------------------------|------:|
 | MASK_SOLID              | 1
 | MASK_COLLISION          | 637537057
 | MASK_PERMANENTMARK      | 1073741825
@@ -1880,7 +1880,7 @@ Masks:
 Contents:
 
 | Name                   | Value |
-|------------------------|-------|
+|------------------------|------:|
 | CONTENTS_SOLID         | 1
 | CONTENTS_LAVA          | 8
 | CONTENTS_SLIME         | 16
