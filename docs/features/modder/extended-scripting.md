@@ -30,7 +30,7 @@ On failure, EOF is returned.
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fclose
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - fclose](https://www.cplusplus.com/reference/cstdio/fclose/)
 
 ### fcopy
 
@@ -79,7 +79,7 @@ Otherwise, a zero value is returned.
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - feof
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - feof](https://www.cplusplus.com/reference/cstdio/feof/)
 
 ### ferror
 
@@ -107,7 +107,7 @@ Otherwise, it returns a zero value.
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ferror
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - ferror](https://www.cplusplus.com/reference/cstdio/ferror/)
 
 ### fexists
 
@@ -164,7 +164,7 @@ If an error occurs, EOF is returned and the error indicator is set.
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fflush
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - fflush](https://www.cplusplus.com/reference/cstdio/fflush/)
 
 ### fgetc
 
@@ -192,7 +192,7 @@ The character read is returned as an int value.
 You need to cast it to char if you want to use it in string.
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fgetc
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - fgetc](https://www.cplusplus.com/reference/cstdio/fgetc/)
 
 ### fgets
 
@@ -225,7 +225,7 @@ If an error occurs 0 (null) is returned.
 If a memory allocation error occurs, -1 is returned.
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fgets
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - fgets](https://www.cplusplus.com/reference/cstdio/fgets/)
 
 ### flist
 
@@ -273,7 +273,7 @@ Command returns file handle that is needed for identification and further operat
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fopen
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - fopen](https://www.cplusplus.com/reference/cstdio/fopen/)
 
 ### fputc
 
@@ -303,7 +303,7 @@ You have to cast returned value to char.
 If you pass longer string, only first character will be written to file.
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fputc
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - fputc](https://www.cplusplus.com/reference/cstdio/fputc/)
 
 ### fputs
 
@@ -330,7 +330,7 @@ On error, the function returns EOF.
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fputs
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - fputs](https://www.cplusplus.com/reference/cstdio/fputs/)
 
 ### freadall
 
@@ -402,7 +402,7 @@ On failure, a nonzero value is returned and the errno variable is set to the cor
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - remove
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - remove](https://www.cplusplus.com/reference/cstdio/remove/)
 
 ### frename
 
@@ -423,7 +423,7 @@ On failure, a nonzero value is returned and the errno variable is set to the cor
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - rename
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - rename](https://www.cplusplus.com/reference/cstdio/rename/)
 
 ### frewind
 
@@ -449,7 +449,7 @@ none
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - rewind
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - rewind](https://www.cplusplus.com/reference/cstdio/rewind/)
 
 ### fsaveall
 
@@ -505,7 +505,7 @@ Otherwise, it returns nonzero value.
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fseek
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - fseek](https://www.cplusplus.com/reference/cstdio/fseek/)
 
 ### ftell
 
@@ -531,7 +531,7 @@ If an error occurs, -1 is returned.
 ```
 
 !!! important
-    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ftell
+    You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - ftell](https://www.cplusplus.com/reference/cstdio/ftell/)
 
 
 ## iHuddraws
@@ -1095,7 +1095,7 @@ Floating point value in the interval [-1,+1].
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - acos
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - acos](https://www.cplusplus.com/reference/cmath/acos/)
 
 ### asin
 
@@ -1115,7 +1115,7 @@ Floating point value in the interval [-1,+1].
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - asin
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - asin](https://www.cplusplus.com/reference/cmath/asin/)
 
 ### atan
 
@@ -1138,7 +1138,7 @@ Principal arc tangent of x, in the interval [-pi/2,+pi/2] radians.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - atan
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - atan](https://www.cplusplus.com/reference/cmath/atan/)
 
 ### atan2
 
@@ -1161,7 +1161,7 @@ Principal arc tangent of y/x, in the interval [-pi,+pi] radians.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - atan2
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - atan2](https://www.cplusplus.com/reference/cmath/atan2/)
 
 ### ceil
 
@@ -1181,7 +1181,7 @@ The smallest integral value not less than x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ceil
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - ceil](https://www.cplusplus.com/reference/cmath/ceil/)
 
 ### cos
 
@@ -1202,7 +1202,7 @@ Cosine of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cos
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - cos](https://www.cplusplus.com/reference/cmath/cos/)
 
 ### cosh
 
@@ -1222,7 +1222,7 @@ Hyperbolic cosine of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cosh
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - cosh](https://www.cplusplus.com/reference/cmath/cosh/)
 
 ### exp
 
@@ -1243,7 +1243,7 @@ Exponential value of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - exp
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - exp](https://www.cplusplus.com/reference/cmath/exp/)
 
 ### floor
 
@@ -1263,7 +1263,7 @@ The largest integral value not greater than x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - floor
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - floor](https://www.cplusplus.com/reference/cmath/floor/)
 
 ### fmod
 
@@ -1290,7 +1290,7 @@ The remainder of dividing the arguments.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fmod
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - fmod](https://www.cplusplus.com/reference/cmath/fmod/)
 
 ### frexp
 
@@ -1315,7 +1315,7 @@ local.result["exponent"] - exponent part
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - frexp
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - frexp](https://www.cplusplus.com/reference/cmath/frexp/)
 
 ### ldexp
 
@@ -1338,7 +1338,7 @@ x * 2<sup>exp</sup>
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ldexp
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - ldexp](https://www.cplusplus.com/reference/cmath/ldexp/)
 
 ### log
 
@@ -1361,7 +1361,7 @@ Natural logarithm of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - log
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - log](https://www.cplusplus.com/reference/cmath/log/)
 
 ### log10
 
@@ -1381,7 +1381,7 @@ Common logarithm of x, for values of x greater than zero.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - log10
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - log10](https://www.cplusplus.com/reference/cmath/log10/)
 
 ### modf
 
@@ -1402,7 +1402,7 @@ local.result["fractional"] - fractional part
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - modf
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - modf](https://www.cplusplus.com/reference/cmath/modf/)
 
 ### pow
 
@@ -1425,27 +1425,27 @@ The result of raising base to the power exponent.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - pow
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - pow](https://www.cplusplus.com/reference/cmath/pow/)
 
 ### sin
 
 sin( Float x )
 
-Returns the sine of an angle of x radians.
+Returns the sine of an angle of x radians.  
 Example:
 
 ```
-local.result = cos local.x
+local.result = sin local.x
 ```
 
 Result:
 
 ```
-Cosine of x.
+Sine of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cos
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - sin](https://www.cplusplus.com/reference/cmath/sin/)
 
 ### sinh
 
@@ -1465,7 +1465,7 @@ Hyperbolic sine of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - sinh
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - sinh](https://www.cplusplus.com/reference/cmath/sinh/)
 
 ### sqrt
 
@@ -1485,7 +1485,7 @@ Square root of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - sqrt
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - sqrt](https://www.cplusplus.com/reference/cmath/sqrt/)
 
 ### tan
 
@@ -1505,7 +1505,7 @@ Tangent of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - tan
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - tan](https://www.cplusplus.com/reference/cmath/tan/)
 
 ### tanh
 
@@ -1525,7 +1525,7 @@ Hyperbolic tangent of x.
 ```
 
 !!! important
-    This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - tanh
+    This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - tanh](https://www.cplusplus.com/reference/cmath/tanh/)
 
 
 ## Events
@@ -1622,8 +1622,8 @@ String with current date.
 04/06/18
 ```
 
-Formatting options:
-http://www.cplusplus.com/reference/ctime/strftime/
+Formatting options:  
+[www.cplusplus.com/reference/ctime/strftime/](https://www.cplusplus.com/reference/ctime/strftime/)
 
 Max format length is 512 characters.
 
