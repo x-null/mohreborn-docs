@@ -14,7 +14,7 @@ admin account can do, by combining those permissions.
 #### List of available permissions
 
 | Name                    | Numeric Value | Allowed commands                                                               | Description                                                                 |
-|-------------------------|---------------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+|-------------------------|--------------:|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | ACCESSLEVEL_PROTECTNAME | 1             | ad_protname, ad_unprotname, ad_listprotnames                                   | One can protect/unprotect and list protected names                          |
 | ACCESSLEVEL_MAPCHANGE   | 2             | ad_map                                                                         | One can change maps                                                         |
 | ACCESSLEVEL_RESTART     | 4             | ad_restart                                                                     | One can restart the game                                                    |
