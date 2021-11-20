@@ -250,6 +250,25 @@ List with filenames and their paths found.
 !!! important
     You can open only 32 files at once.
 
+### fnewdir
+
+fnewdir( String dirname )
+
+Creates a new directory with given dirname
+
+Example:
+
+```
+local.result = fnewdir "main/new_folder"
+```
+
+Result:
+
+```
+0 = Success
+-1 = Error, directory already exists
+```
+
 ### fopen
 
 fopen( String filename, String accessType )
@@ -403,6 +422,25 @@ On failure, a nonzero value is returned and the errno variable is set to the cor
 
 !!! important
     You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: [ANSI C - remove](https://www.cplusplus.com/reference/cstdio/remove/){:target="_blank"}
+
+### fremovedir
+
+fremovedir( String dirname )
+
+Removes the directory with given dirname.
+
+Example:
+
+```
+local.result = fremovedir "main/subfolder"
+```
+
+Result:
+
+```
+0 = Success
+-1 = Error, directory doesn't exists or contains files in it
+```
 
 ### frename
 
@@ -863,6 +901,25 @@ or
 If player had 8 kills, he will have 3 kills
 ```
 
+### .adminrights
+
+.adminrights( void )
+
+Gets the admin rights of the player ([Reborn ClientAdmin System](../../server-admin/accounts-and-permissions/#permissions){:target="_blank"}).
+
+Example:
+
+```
+local.result = $player[1].adminrights
+```
+
+Result:
+
+```
+Returns the numeric value of the player's admin permissions
+Returns 0 if the player is not logged in as admin
+```
+
 ### bindweap
 
 bindweap( Entity weapon )
@@ -1036,6 +1093,71 @@ Result:
 ```
 Returns 1 if player is logged in as administrator, otherwise it returns 0.
 ```
+
+### .leanleftheld
+
+.leanleftheld( void )
+
+Returns 1 if player is leaning left. Otherwise returns 0.
+
+Example:
+
+```
+if ( $player[1].leanleftheld )
+...
+```
+
+Result:
+
+```
+1 = player is leaning left
+0 = player is not leaning left
+```
+
+### .leanrightheld
+
+.leanrightheld( void )
+
+Returns 1 if player is leaning right. Otherwise returns 0.
+
+Example:
+
+```
+if ( $player[1].leanrightheld )
+...
+```
+
+Result:
+
+```
+1 = player is leaning right
+0 = player is not leaning right
+```
+
+### .runheld
+
+.runheld( void )
+
+Returns 1 if player is not walking/holding the left shift key (+speed).  
+Otherwise returns 0.
+
+Example:
+
+```
+if ( $player[1].runheld )
+...
+```
+
+Result:
+
+```
+1 = player is not holding the left shift key (+speed)
+0 = player is holding the left shift key (+speed)
+```
+
+!!! important
+    This command works different than the `getmovement` command, it doesn't check the running state of the player.  
+    It will return 1 even is the player is in spectator mode
 
 ### .secfireheld
 
@@ -1678,6 +1800,24 @@ eg. 2 = GMT +2
 
 ScriptThread -> Listener -> Class
 
+### chartoint
+
+chartoint( String char )
+
+Converts an ASCII character to its decimal equivalent and returns that as an integer value.
+
+Example:
+
+```
+local.result = chartoint "a"
+```
+Result:
+
+```
+The decimal equivalent of "a" = 97
+```
+
+
 ### conprintf
 
 conprintf( String text )
@@ -1783,6 +1923,24 @@ or
 
 ```
 Server will change map to dm/mohdm1
+```
+
+### teamswitchdelay
+
+teamswitchdelay( Float time )
+
+Sets the team switch delay time for all players.
+
+Example:
+
+```
+teamswitchdelay 3
+```
+
+Result:
+
+```
+Players have to wait 3 seconds until they can switch teams again
 ```
 
 ### traced
