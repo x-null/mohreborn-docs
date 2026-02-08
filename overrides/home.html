@@ -3,8 +3,17 @@
 {{ super() }}
 <style>
     .md-main {
-        background: linear-gradient(171deg, #795649, #795649, #46413f calc(50% - 1px), white 50%);
+        background: linear-gradient(171deg, #795649, #795649, #46413f calc(50% - 1px), var(--md-default-bg-color) 50%);
+        display: flex;
+        flex-direction: column;
+        overflow-y: clip;
     }
+    .md-main__inner {
+        flex: 1;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
     .md-content {
         margin-left: 0;
         margin-right: 0;
@@ -14,8 +23,11 @@
     .md-content__inner {
         margin: 0 .8rem 1.2rem;
         padding-top: .6rem;
+        height: 100%;
     }
-
+    .hero-container {
+        height: 100%;
+    }
     .hero-container .inverted-color {
       color: var(--md-primary-bg-color);
     }
@@ -31,6 +43,8 @@
     .hero-container .md-button {
       margin-top: .5rem;
       margin-right: .5rem;
+        border-color: var(--md-accent-fg-color);
+        color: var(--md-accent-fg-color);
     }
 
     .hero-container .inverted-color .md-button {
@@ -60,6 +74,10 @@
         text-align: right;
       }
 
+    .md-sidebar {
+        display: none !important;
+    }
+
     /* [mobile portrait -]: Adjust headline */
     @media screen and (max-width: 30em) {
 
@@ -73,12 +91,17 @@
 
     /* [mobile portrait -]: Adjust headline */
     @media screen and (max-width: 60em) {
-       .hero-container .image-content, .content.placeholder {
+      .hero-container {
+        display: flex;
+        align-items: stretch;
+        flex-wrap: wrap;
+      }
+      .hero-container .image-content, .content-placeholder {
         display: none;
       }
-      .hero-container .content {
+      /*.hero-container .content {
         padding-bottom: 6rem;
-      }
+      }*/
     }
 
     /* [tablet landscape +]: Display content and image next to each other */
@@ -92,8 +115,13 @@
       }
 
       /* Increase bottom spacing and set dimensions */
+      .hero-container .content-placeholder {
+        width: 50%;
+      }
+
       .hero-container .content {
         width: 50%;
+        align-self: center;
       }
 
       /* Swap with teaser and set dimensions */
@@ -124,52 +152,41 @@
 {% block content %}
 <div class="hero-container">
     <!-- Hero content -->
-    <div class="content inverted-color pb10">
+    <div class="content inverted-color">
         <h1>Play MoH:AA/SH/BT Online</h1>
         <p>
             On May 31, 2014 - GameSpy MasterServer, which kept list of all online MoH servers has been shut down.
-            xNULL team created custom Reborn MasterServer in order to save the game we all love so much.
         </p>
-        <p>Patch your game, make in-game server browser work again, and join other players online!</p>
+        <p>Patch your game to make in-game server browser work again and join other players online!</p>
         <a
-                href="getting-started/play-online"
-                title="Play online - Get started"
+                href="getting-started"
+                title="Get started"
                 class="md-button md-button--primary"
         >
             Get started
         </a>
-        <a
-                href="welcome"
-                title="Learn more"
-                class="md-button"
-        >
-            Learn more
-        </a>
     </div>
-    <div class="image-content inverted-color pb10">
-        <img src="assets/images/mohaa-pic.png" style="transform: scale(0.75) translate(10%, 20%) rotate(-30deg);"/>
-        <img src="assets/images/mohaa-pic-2.png" style="transform: scale(0.75) translate(10%, 75%);"/>
+    <div class="image-content inverted-color">
     </div>
-    <div class="content placeholder"></div>
+    <div class="content-placeholder"></div>
     <div class="content">
-        <h1 class="text-right">Host MoH:AA Reborn Server</h1>
-        <p>The MoH Reborn Project has been initiated to revitalize the MoH: Allied Assault game.</p>
-        <p>Its corner stone is an unofficial patch, created by the xNULL community, that has been in active development for over 10 years.</p>
+        <h1 class="text-right">Join our community!</h1>
+        <p>
+            The MoH Reborn Project aims to revitalize the Medal of Honor classic games.
+            Its corner stone is an unofficial Reborn patch that is developed for over 10 years.
+        </p>
+        <p>
+            If you are interested in MoH modding, you play the game or host a server and want
+            to keep in touch with like-minded people, then join our community Discord server!
+        </p>
         <a
                 style="float: right;"
-                href="welcome"
-                title="Learn more"
+                href="https://discord.gg/QYNNkCdHBK"
+                title="Join Discord"
                 class="md-button"
+                target="_blank"
         >
-            Learn more
-        </a>
-        <a
-                style="float: right;"
-                href="getting-started/host-your-own-server"
-                title="Host MoH:AA Reborn Server - Get started"
-                class="md-button md-button--primary"
-        >
-            Get started
+            Join Discord
         </a>
     </div>
 </div>

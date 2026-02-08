@@ -1,53 +1,50 @@
 # Project information
 site_name: Medal of Honor Reborn
 site_description: Medal of Honor Reborn Community Patch
-site_author: Michał 'Razo[R]apiD' Knieć & xNULL Development contributors
-site_url: https://x-null.github.io/mohreborn-docs/
+site_author: Michał 'Razo[R]apiD' Knieć
+site_url: https://mohreborn.github.io/mohreborn-docs/
 
 # Repository
-repo_name: x-null/mohreborn-docs
-repo_url: https://github.com/x-null/mohreborn-docs
+repo_name: mohreborn/mohreborn-docs
+repo_url: https://github.com/mohreborn/mohreborn-docs
 edit_uri: ''
 
 # Copyright
-copyright: Copyright &copy; 2020 xNULL Development
+copyright: Copyright &copy; 2020 MoH Reborn Team
 
 # Page tree
 nav:
   - 'Home': index.md
-  - 'Project overview':
-    - 'Welcome': welcome.md
-    - 'History & Credits': history-and-credits.md
   - 'Getting started':
-    - 'Play online': getting-started/play-online.md
-    - 'Host your own server': getting-started/host-your-own-server.md
-    - 'Player guides': getting-started/player-guides.md
-    - 'Server Admin guides': getting-started/server-admin-guides.md
-    - 'Modding guides': getting-started/modding-guides.md
-
-  - 'Features':
-    - 'Features Overview': features/features-overview.md
-    - 'For Players':
-        - 'Player voting': features/player/player-voting.md
-    - 'For Server Admins':
-        - 'Admin accounts and permissions': features/server-admin/accounts-and-permissions.md
-        - 'Banning and kicking players': features/server-admin/banning-kicking-players.md
-        - 'Chat management': features/server-admin/chat-management.md
-        - 'Protected player names': features/server-admin/protected-player-names.md
-        - 'Anti Wallhack': features/server-admin/anti-wallhack.md
-        - 'Anti NoRecoil': features/server-admin/anti-norecoil.md
-        - 'Anti STWH': features/server-admin/anti-stwh.md
-        - 'High Ping Autokick': features/server-admin/high-ping-autokick.md
-        - 'Connections Limiter': features/server-admin/connections-limiter.md
-        - 'Anti Packet Flood': features/server-admin/anti-packet-flood.md
-        - 'Stufftext Bypass Detection': features/server-admin/stufftext-bypass-detection.md
-        - 'Player voting': features/server-admin/player-voting.md
-        - 'Automatic updates': features/server-admin/automatic-updates.md
-    - 'For Modders':
-        - 'Extended scripting': features/modder/extended-scripting.md
-        - 'Event system': features/modder/event-system.md
-
+      - 'Start': getting-started/index.md
+      - 'Players': getting-started/players.md
+      - 'Server owners': getting-started/server-owners.md
+      - 'Manual patching': getting-started/manual-patching.md
+      - 'Other': getting-started/other.md
   - 'Downloads': downloads.md
+  - 'Documentation':
+      - 'Features Overview': features/features-overview.md
+      - 'For Players':
+          - 'Player voting': features/player/player-voting.md
+      - 'For Server Admins':
+          - 'Admin accounts and permissions': features/server-admin/accounts-and-permissions.md
+          - 'Banning and kicking players': features/server-admin/banning-kicking-players.md
+          - 'Chat management': features/server-admin/chat-management.md
+          - 'Protected player names': features/server-admin/protected-player-names.md
+          - 'Anti Wallhack': features/server-admin/anti-wallhack.md
+          - 'Anti NoRecoil': features/server-admin/anti-norecoil.md
+          - 'Anti STWH': features/server-admin/anti-stwh.md
+          - 'High Ping Autokick': features/server-admin/high-ping-autokick.md
+          - 'Connections Limiter': features/server-admin/connections-limiter.md
+          - 'Anti Packet Flood': features/server-admin/anti-packet-flood.md
+          - 'Stufftext Bypass Detection': features/server-admin/stufftext-bypass-detection.md
+          - 'Player voting': features/server-admin/player-voting.md
+          - 'Automatic updates': features/server-admin/automatic-updates.md
+      - 'For Modders':
+          - 'Extended scripting': features/modder/extended-scripting.md
+          - 'Event system': features/modder/event-system.md
+  - 'Resources': resources.md
+  - 'About': about.md
 
 # Configuration
 theme:
@@ -55,8 +52,33 @@ theme:
   custom_dir: overrides
   language: en
   palette:
-    primary: brown
-    accent: deep orange
+
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: brown
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: brown
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+#  palette:
+#    primary: brown
+#    accent: deep orange
   favicon: assets/images/favicon.png
   icon:
     logo: fontawesome/solid/medal
@@ -74,16 +96,20 @@ extra_css:
 extra:
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/x-null
+      link: https://github.com/mohreborn
     - icon: fontawesome/brands/discord
-      link: https://www.discord.gg/kGp8vGC
+      link: https://discord.gg/QYNNkCdHBK
 
 # Extensions
 markdown_extensions:
   - meta
   - admonition
   - attr_list
+  - md_in_html
   - codehilite:
       guess_lang: false
   - toc:
       permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
