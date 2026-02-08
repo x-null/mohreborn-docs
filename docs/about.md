@@ -2,7 +2,7 @@
 
 The MoH Reborn Project aims to revitalize the Medal of Honor classic games.
 
-Its corner stone is an unofficial patch that is in development for over 10 years.
+Its corner stone is an unofficial MoH Reborn 1.12 patch that is in development for over 10 years.
 
 While the patch mainly targets Allied Assault, we also develop solutions for MoH:SH/BT/PA, and 
 we plan to release the MoH Reborn patch for Spearhead and Breakthrough in 2026.

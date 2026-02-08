@@ -17,23 +17,23 @@
 
 ## Players
 
-- [Allied Assault 1.11 + Spearhead 2.15 + Breakthrough 2.40](assets/moh-binaries/mohreborn_aa_sh_bt.zip){: target="_blank"}
-- [Allied Assault 1.11](assets/moh-binaries/mohreborn_aa.zip){: target="_blank"}
-- [Allied Assault 1.11 + Spearhead 2.15](assets/moh-binaries/mohreborn_aa_sh.zip){: target="_blank"}
-- [Allied Assault 1.11 + Breakthrough 2.40](assets/moh-binaries/mohreborn_aa_bt.zip){: target="_blank"}
+- [Allied Assault 1.11 + Spearhead 2.15 + Breakthrough 2.40](assets/moh-binaries/mohreborn_aa_sh_bt.zip)
+- [Allied Assault 1.11](assets/moh-binaries/mohreborn_aa.zip)
+- [Allied Assault 1.11 + Spearhead 2.15](assets/moh-binaries/mohreborn_aa_sh.zip)
+- [Allied Assault 1.11 + Breakthrough 2.40](assets/moh-binaries/mohreborn_aa_bt.zip)
 
 ## Servers
 
 - Allied Assault 1.11
-    - [Reborn Windows](assets/moh-binaries/mohreborn_server_aa_win.zip){: target="_blank"}
-    - [Reborn Linux](assets/moh-binaries/mohreborn_server_aa_nix.zip){: target="_blank"}
+    - [Reborn Windows](assets/moh-binaries/mohreborn_server_aa_win.zip)
+    - [Reborn Linux](assets/moh-binaries/mohreborn_server_aa_nix.zip)
 - Spearhead 2.15
-    - [Windows](assets/moh-binaries/mohreborn_server_sh_win.zip){: target="_blank"}
-    - [Windows + Daven's fixes](assets/moh-binaries/mohreborn_server_sh_win_daven.zip){: target="_blank"}
-    - [Linux](assets/moh-binaries/mohreborn_server_sh_nix.zip){: target="_blank"}
+    - [Windows](assets/moh-binaries/mohreborn_server_sh_win.zip)
+    - [Windows + Daven's fixes](assets/moh-binaries/mohreborn_server_sh_win_daven.zip)
+    - [Linux](assets/moh-binaries/mohreborn_server_sh_nix.zip)
 - Breakthrough 2.40
-    - [Windows](assets/moh-binaries/mohreborn_server_bt_win.zip){: target="_blank"}
-    - [Windows + Daven's fixes](assets/moh-binaries/mohreborn_server_bt_win_daven.zip){: target="_blank"}
+    - [Windows](assets/moh-binaries/mohreborn_server_bt_win.zip)
+    - [Windows + Daven's fixes](assets/moh-binaries/mohreborn_server_bt_win_daven.zip)
     - Linux version doesn't exist
 
 ## Other

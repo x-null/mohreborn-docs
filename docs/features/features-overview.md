@@ -2,7 +2,7 @@
 
 !!! info
     Remember that MoH Reborn patch currently provides extra features only for MoH:AA 1.11 server version!
-    Spearhead and Breakthrough versions are planned for 2026.
+    Spearhead and Breakthrough versions are planned for 2026, for both servers and players.
 
 
 Below you will find short overview of all features that come with Reborn 1.12 patch.

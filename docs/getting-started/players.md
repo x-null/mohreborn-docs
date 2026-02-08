@@ -2,15 +2,15 @@
 
 ## Download the patch
 
-- [Allied Assault 1.11 + Spearhead 2.15 + Breakthrough 2.40](../assets/moh-binaries/mohreborn_aa_sh_bt.zip){: target="_blank"}
-- [Allied Assault 1.11](../assets/moh-binaries/mohreborn_aa.zip){: target="_blank"}
-- [Allied Assault 1.11 + Spearhead 2.15](../assets/moh-binaries/mohreborn_aa_sh.zip){: target="_blank"}
-- [Allied Assault 1.11 + Breakthrough 2.40](../assets/moh-binaries/mohreborn_aa_bt.zip){: target="_blank"}
+- [Allied Assault 1.11 + Spearhead 2.15 + Breakthrough 2.40](../assets/moh-binaries/mohreborn_aa_sh_bt.zip)
+- [Allied Assault 1.11](../assets/moh-binaries/mohreborn_aa.zip)
+- [Allied Assault 1.11 + Spearhead 2.15](../assets/moh-binaries/mohreborn_aa_sh.zip)
+- [Allied Assault 1.11 + Breakthrough 2.40](../assets/moh-binaries/mohreborn_aa_bt.zip)
 
 ## Install
 
-* Extract (unzip) the files.
-* Select all files and copy them to your game directory.
+* Extract (unzip) the archive.
+* Select all files (and folders) and copy them to your game directory.
 * When asked to replace files, select "Replace All" option.
 * You are good to go! Enjoy your game!
 
@@ -35,3 +35,7 @@ If you have game shortcut in your Start Menu or on your Desktop then:
 
 * right-click it, and select **Open file location**
 * if it takes you to a shortcut, right-click that shortcut and select **Open file location** again
+
+### Other
+
+Contact us on our [Discord server](https://discord.gg/QYNNkCdHBK){: target="_blank"} so that we can try to help you.
