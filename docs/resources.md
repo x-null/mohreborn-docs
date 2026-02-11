@@ -6,12 +6,21 @@
     
     The archives include:
  
-      - old xNULL forum
+      - xNULL forum
       - AAAA forum and mod database
-      - MoH Central (old MRU website)
+      - The Mod Theater forum
       - .MAP website with mapping tutorials 
 
-    and more!
+      and more!
+
+- [WeBeHostiN](https://webehostin.com/games.php){: target="_blank"}
+
+    If you want to host your own MoH:AA/SH/BT server without a hassle, you may want to consider using
+    game hosting services provided by one of our community members - **own3mall**.
+
+- [MoH Central](https://moh-central.net/){: target="_blank"}
+
+    A community modding forum, previously also known as MRU (Mods-R-Us).
 
 - [OpenMoHAA](https://www.openmohaa.org/){: target="_blank"}
 
@@ -24,11 +33,6 @@
 - [MoH League Discord](https://discord.gg/0oS4aqwv2H9KUJU6){: target="_blank"}
 
     Competitive MoH scene with regular tournaments, ladders and active clans.
-
-- [WeBeHostiN](https://webehostin.com/games.php){: target="_blank"}
-
-    If you want to host your own MoH:AA/SH/BT server without a hassle, you may want to consider using
-    game hosting services provided by one of our community members - **own3mall**.
 
 - [Volute](https://volute.io/){: target="_blank"}
 
