@@ -1,0 +1,85 @@
+.accent {
+    color: var(--md-accent-fg-color);
+}
+
+#forum-link-img {
+    width: 320px;
+}
+
+.blockquote-citation {
+    font-size: .7rem;
+}
+
+#patcher {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#patcher input[type="file"] {
+    display: none;
+}
+
+#patcher .click {
+    color: var(--md-accent-fg-color);
+    font-weight: bold;
+}
+
+#patcher .small {
+    font-size: 0.6rem;
+}
+
+#patcher .file-area label {
+    display: inline-block;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    color: #795649;
+    background-color: rgba(121, 86, 73, 0.25);
+    border-color: #795649;
+    margin-bottom: 1.5rem;
+    z-index: 10;
+}
+
+#patcher .file-area label {
+    border: 3px dashed #795649;
+}
+
+#patcher .file-area label.dragging {
+    color: var(--md-accent-fg-color);
+    background-color: rgba(121, 86, 73, 0.15);
+    border: 3px solid var(--md-accent-fg-color);
+}
+
+#patcher .file-area .description {
+    padding: 1.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    z-index: 0;
+}
+
+#patcher .file-area .description .text {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#patcher .actions {
+    display: flex;
+    justify-content: end;
+}
+
+#patcher .st-unknown {
+    color: orange;
+}
+
+#patcher .st-patched {
+    color: limegreen;
+}
+
+#patcher .st-unpatched {
+    color: red;
+}
+
+#patcher button.hidden {
+    display: none;
+}

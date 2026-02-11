@@ -1,0 +1,5130 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Medal of Honor Reborn Community Patch">
+      
+      
+        <meta name="author" content="Michał 'Razo[R]apiD' Knieć">
+      
+      
+        <link rel="canonical" href="https://mohreborn.github.io/mohreborn-docs/features/modder/extended-scripting/">
+      
+      
+        <link rel="prev" href="../../server-admin/automatic-updates/">
+      
+      
+        <link rel="next" href="../event-system/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Extended scripting - Medal of Honor Reborn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Medal of Honor Reborn" class="md-header__button md-logo" aria-label="Medal of Honor Reborn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 128 139.7-12.9c-6.5-10.8-20.1-14.7-31.3-9.1L21.8 21.3C9.9 27.2 5.1 41.6 11 53.5l69.6 139.1C50.5 226.5 32.3 271.1 32.3 320c0 106 86 192 192 192s192-86 192-192c0-48.9-18.3-93.5-48.3-127.4l69.6-139.1c5.9-11.9 1.1-26.3-10.7-32.2l-86.7-43.4c-11.2-5.6-24.9-1.6-31.3 9.1zm30.8 142.5c1.4 2.8 4 4.7 7 5.1l50.1 7.3c7.7 1.1 10.7 10.5 5.2 16l-36.3 35.4c-2.2 2.2-3.2 5.2-2.7 8.3l8.6 49.9c1.3 7.6-6.7 13.5-13.6 9.9l-44.8-23.6c-2.7-1.4-6-1.4-8.7 0l-44.8 23.6c-6.9 3.6-14.9-2.2-13.6-9.9l8.6-49.9c.5-3-.5-6.1-2.7-8.3l-36.3-35.4c-5.6-5.4-2.5-14.8 5.2-16l50.1-7.3c3-.4 5.7-2.4 7-5.1l22.4-45.4c3.4-7 13.3-7 16.8 0l22.4 45.4z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Medal of Honor Reborn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Extended scripting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="deep-orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mohreborn/mohreborn-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mohreborn/mohreborn-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/" class="md-tabs__link">
+          
+  
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../downloads/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Downloads
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../features-overview/" class="md-tabs__link">
+          
+  
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Medal of Honor Reborn" class="md-nav__button md-logo" aria-label="Medal of Honor Reborn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 128 139.7-12.9c-6.5-10.8-20.1-14.7-31.3-9.1L21.8 21.3C9.9 27.2 5.1 41.6 11 53.5l69.6 139.1C50.5 226.5 32.3 271.1 32.3 320c0 106 86 192 192 192s192-86 192-192c0-48.9-18.3-93.5-48.3-127.4l69.6-139.1c5.9-11.9 1.1-26.3-10.7-32.2l-86.7-43.4c-11.2-5.6-24.9-1.6-31.3 9.1zm30.8 142.5c1.4 2.8 4 4.7 7 5.1l50.1 7.3c7.7 1.1 10.7 10.5 5.2 16l-36.3 35.4c-2.2 2.2-3.2 5.2-2.7 8.3l8.6 49.9c1.3 7.6-6.7 13.5-13.6 9.9l-44.8-23.6c-2.7-1.4-6-1.4-8.7 0l-44.8 23.6c-6.9 3.6-14.9-2.2-13.6-9.9l8.6-49.9c.5-3-.5-6.1-2.7-8.3l-36.3-35.4c-5.6-5.4-2.5-14.8 5.2-16l50.1-7.3c3-.4 5.7-2.4 7-5.1l22.4-45.4c3.4-7 13.3-7 16.8 0l22.4 45.4z"/></svg>
+
+    </a>
+    Medal of Honor Reborn
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mohreborn/mohreborn-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mohreborn/mohreborn-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Players
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/server-owners/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server owners
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/manual-patching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manual patching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/other/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Players
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    For Players
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../player/player-voting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player voting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Server Admins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    For Server Admins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/accounts-and-permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admin accounts and permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/banning-kicking-players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Banning and kicking players
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/chat-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chat management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/protected-player-names/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protected player names
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/anti-wallhack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anti Wallhack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/anti-norecoil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anti NoRecoil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/anti-stwh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anti STWH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/high-ping-autokick/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    High Ping Autokick
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/connections-limiter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connections Limiter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/anti-packet-flood/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anti Packet Flood
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/stufftext-bypass-detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stufftext Bypass Detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/player-voting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player voting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-admin/automatic-updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatic updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Modders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    For Modders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extended scripting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extended scripting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Handlers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Handlers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fopen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fopen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fclose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fclose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        feof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fseek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fseek
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ftell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frewind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frewind
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foutc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        foutc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgetc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fgetc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fgets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ferror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ferror
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fflush" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fflush
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fexists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fexists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#freadall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        freadall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fsaveall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fsaveall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fremove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fremove
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frename" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frename
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fcopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fcopy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#freadpak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        freadpak
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ihuddraws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iHuddraws
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="iHuddraws">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_align" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_align
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_alpha
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_color
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_font" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_font
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_rect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_rect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_shader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_shader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_virtualsize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_virtualsize
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        netname
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getclientnum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getclientnum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#player_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addkills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        addkills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adddeaths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        adddeaths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getkills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getkills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdeaths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getdeaths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        isadmin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getconnstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getconnstate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getactiveweap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getactiveweap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secfireheld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .secfireheld
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .userinfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindweap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bindweap
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maths
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Maths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        acos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        asin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atan2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atan2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cosh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sinh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tanh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        exp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frexp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frexp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldexp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ldexp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        log10
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        modf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sqrt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ceil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ceil
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        floor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fmod
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registerev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        registerev
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unregisterev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unregisterev
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Date/Time
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Date/Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gettime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gettime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettimezone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gettimezone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getdate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getentity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stuffsrv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stuffsrv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conprintf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        conprintf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        md5string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        md5file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typeof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        typeof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        traced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../event-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Handlers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Handlers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fopen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fopen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fclose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fclose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        feof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fseek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fseek
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ftell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frewind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frewind
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foutc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        foutc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgetc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fgetc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fgets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ferror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ferror
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fflush" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fflush
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fexists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fexists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#freadall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        freadall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fsaveall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fsaveall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fremove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fremove
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frename" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frename
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fcopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fcopy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#freadpak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        freadpak
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ihuddraws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iHuddraws
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="iHuddraws">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_align" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_align
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_alpha
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_color
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_font" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_font
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_rect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_rect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_shader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_shader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ihuddraw_virtualsize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ihuddraw_virtualsize
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        netname
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getclientnum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getclientnum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#player_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addkills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        addkills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adddeaths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        adddeaths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getkills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getkills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdeaths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getdeaths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        isadmin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getconnstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getconnstate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getactiveweap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getactiveweap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secfireheld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .secfireheld
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .userinfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindweap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bindweap
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maths
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Maths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        acos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        asin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atan2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atan2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cosh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sinh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tanh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        exp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frexp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frexp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldexp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ldexp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        log10
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        modf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sqrt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ceil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ceil
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        floor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fmod
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registerev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        registerev
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unregisterev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unregisterev
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Date/Time
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Date/Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gettime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gettime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettimezone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gettimezone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getdate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getentity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stuffsrv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stuffsrv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conprintf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        conprintf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        md5string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        md5file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typeof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        typeof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        traced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Extended scripting</h1>
+
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Reborn patch has introduced a number of new scripting commands available for people to utilize in their mods.</p>
+<h2 id="file-handlers">File Handlers<a class="headerlink" href="#file-handlers" title="Permanent link">&para;</a></h2>
+<p>ScriptThread -&gt; Listener -&gt; Class</p>
+<h3 id="fopen">fopen<a class="headerlink" href="#fopen" title="Permanent link">&para;</a></h3>
+<p>fopen( String filename, String accessType )</p>
+<p>Opens file. Example:</p>
+<div class="codehilite"><pre><span></span><code>local.file = fopen &quot;main/config.txt&quot; &quot;a+&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.file = fopen(&quot;main/config.txt&quot; &quot;a+&quot;)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Command returns file handle that is needed for identification and further operations on this file.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fopen</p>
+</div>
+<h3 id="fclose">fclose<a class="headerlink" href="#fclose" title="Permanent link">&para;</a></h3>
+<p>fclose( Integer filehandle )</p>
+<p>Closes file. Example:</p>
+<div class="codehilite"><pre><span></span><code>local.return = fclose local.file
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.return = fclose(local.file)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If file is successfully closed, a zero value is returned.
+On failure, EOF is returned.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fclose</p>
+</div>
+<h3 id="feof">feof<a class="headerlink" href="#feof" title="Permanent link">&para;</a></h3>
+<p>feof( Integer filehandle )</p>
+<p>Checks for end of file. Example:</p>
+<div class="codehilite"><pre><span></span><code>local.return = feof local.file
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.return = feof(local.file)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>A non-zero value is returned in the case that the End-of-File indicator associated with the file is set.
+Otherwise, a zero value is returned.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - feof</p>
+</div>
+<h3 id="fseek">fseek<a class="headerlink" href="#fseek" title="Permanent link">&para;</a></h3>
+<p>fseek( Integer filehandle, Integer offset, Integer origin )</p>
+<p>Sets the position indicator associated with the file to a new position
+defined by adding offset to a reference position specified by origin.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.return = fseek local.file 154 0
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.return = fseek(local.file 154 0)
+</code></pre></div>
+
+<p>Where origin:</p>
+<ul>
+<li>0 = SEEK_SET</li>
+<li>1 = SEEK_CUR</li>
+<li>2 = SEEK_END</li>
+</ul>
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If successful, the function returns a zero value.
+Otherwise, it returns nonzero value.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fseek</p>
+</div>
+<h3 id="ftell">ftell<a class="headerlink" href="#ftell" title="Permanent link">&para;</a></h3>
+<p>ftell( Integer filehandle )</p>
+<p>Returns the current value of the position indicator of the file. Example:</p>
+<div class="codehilite"><pre><span></span><code>local.return = ftell local.file
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.return = ftell(local.file)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>On success, the current value of the position indicator is returned.
+If an error occurs, -1 is returned.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ftell</p>
+</div>
+<h3 id="frewind">frewind<a class="headerlink" href="#frewind" title="Permanent link">&para;</a></h3>
+<p>frewind( Integer filehandle )</p>
+<p>Sets the position indicator associated with file to the beginning of the file.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.return = frewind local.file
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.return = frewind(local.file)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>none
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - rewind</p>
+</div>
+<h3 id="foutc">foutc<a class="headerlink" href="#foutc" title="Permanent link">&para;</a></h3>
+<p>foutc( Integer filehandle, String character )</p>
+<p>Writes a character to the file and advances the position indicator.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.return = fputc local.file &quot;a&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.return = fputc(local.file &quot;a&quot;)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If there are no errors, the same character that has been written is returned.
+If an error occurs, EOF is returned and the error indicator is set.
+</code></pre></div>
+
+<p>You have to cast returned value to char.
+If you pass longer string, only first character will be written to file.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fputc</p>
+</div>
+<h3 id="fputs">fputs<a class="headerlink" href="#fputs" title="Permanent link">&para;</a></h3>
+<p>fputs( Integer filehandle, String text )</p>
+<p>Writes text to the file and advances the position indicator.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.return = fputs local.file &quot;This is example&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.return = fputs(local.file &quot;This is example&quot;)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>On success, a non-negative value is returned.
+On error, the function returns EOF.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fputs</p>
+</div>
+<h3 id="fgetc">fgetc<a class="headerlink" href="#fgetc" title="Permanent link">&para;</a></h3>
+<p>fgetc( Integer filehandle )</p>
+<p>Reads single character from file.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.char = fgetc local.file
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.char = fgetc(local.file)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>The character read is returned as an int value.
+</code></pre></div>
+
+<p>You need to cast it to char if you want to use it in string.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fgetc</p>
+</div>
+<h3 id="fgets">fgets<a class="headerlink" href="#fgets" title="Permanent link">&para;</a></h3>
+<p>fgets( Integer filehandle, Integer maxbuffsize )</p>
+<p>Reads string line from file.
+Where:</p>
+<ul>
+<li><strong>maxbuffsize</strong> specifies maximum buffer size that will be allocated to store the string in memory.</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.text = fgets local.file 256
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.text = fgets(local.file 256)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If the End-of-File is encountered and no characters have been read 0 (null) is returned.
+If an error occurs 0 (null) is returned.
+</code></pre></div>
+
+<p>If a memory allocation error occurs, -1 is returned.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fgets</p>
+</div>
+<h3 id="ferror">ferror<a class="headerlink" href="#ferror" title="Permanent link">&para;</a></h3>
+<p>ferror( Integer filehandle )</p>
+<p>Checks if the error indicator associated with file is set, returning a value different from zero if it is.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.ret = ferror local.file
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.ret = ferror(local.file)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If the error indicator associated with the file was set, the function returns a nonzero value.
+Otherwise, it returns a zero value.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ferror</p>
+</div>
+<h3 id="fflush">fflush<a class="headerlink" href="#fflush" title="Permanent link">&para;</a></h3>
+<p>fflush( Integer filehandle )</p>
+<p>If the given file was open for writing and the last i/o operation was an output operation, any unwritten data in the output buffer is written to the file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The file remains open after this command.</p>
+</div>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.ret = fflush local.file
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.ret = fflush(local.file)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>A zero value indicates success.
+If an error occurs, EOF is returned and the error indicator is set.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fflush</p>
+</div>
+<h3 id="fexists">fexists<a class="headerlink" href="#fexists" title="Permanent link">&para;</a></h3>
+<p>fexists( String filename )</p>
+<p>Checks if file with given filename exists.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.ret = fexists &quot;folder/folder2/file.txt&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.ret = fexists(&quot;folder/folder2/file.txt&quot;)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If file exists, function returns 1. Otherwise it returns 0.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once.</p>
+</div>
+<h3 id="freadall">freadall<a class="headerlink" href="#freadall" title="Permanent link">&para;</a></h3>
+<p>freadall( Integer filehandle )</p>
+<p>Reads whole file into a string at once. File has to be opened in binary mode (rb, rb+)</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.content = freadall local.file
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.content = freadall(local.file)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Function returns file content as string.
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Don't read binary files with this function because it may cause memory leaks.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once.</p>
+</div>
+<h3 id="fsaveall">fsaveall<a class="headerlink" href="#fsaveall" title="Permanent link">&para;</a></h3>
+<p>fsaveall( Integer filehandle, String content )</p>
+<p>Writes string content to file at once. File has to be opened in binary mode (wb, wb+, ab). The content will start to be saved from the current file position.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.ret = fsaveall local.file local.content
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Function returns number of character written to file or -1 if content is NULL.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once.</p>
+</div>
+<h3 id="fremove">fremove<a class="headerlink" href="#fremove" title="Permanent link">&para;</a></h3>
+<p>fremove( String filename )</p>
+<p>Removes the file with given filename.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.ret = fremove local.filename
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If the file is successfully deleted, a zero value is returned.
+On failure, a nonzero value is returned and the errno variable is set to the corresponding error code.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - remove</p>
+</div>
+<h3 id="frename">frename<a class="headerlink" href="#frename" title="Permanent link">&para;</a></h3>
+<p>frename( String oldname, String newname )</p>
+<p>Renames the file with given filename.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.ret = frename local.oldname local.newname
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If the file is successfully renamed, a zero value is returned.
+On failure, a nonzero value is returned and the errno variable is set to the corresponding error code.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once. This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - rename</p>
+</div>
+<h3 id="fcopy">fcopy<a class="headerlink" href="#fcopy" title="Permanent link">&para;</a></h3>
+<p>fcopy( String filename, String copyname )</p>
+<p>Creates a copy of file.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.ret = fcopy local.filename local.copyname
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If the file is successfully copied, a zero value is returned.
+When function fails to open original file, a -1 value is returned.
+When function fails to create a second file, a -2 value is returned.
+When function fails during data copy process, a -3 value is returned.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once.</p>
+</div>
+<h3 id="freadpak">freadpak<a class="headerlink" href="#freadpak" title="Permanent link">&para;</a></h3>
+<p>freadpak( String filename )</p>
+<p>Reads file located inside .pk3 file in text mode and returns it's content as string.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.content = freadpak local.filename
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If the file is successfully read, function returns a string with it&#39;s content.
+When function fails to find, open or read a file from .pk3, a -1 value is returned.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once.</p>
+</div>
+<h3 id="flist">flist<a class="headerlink" href="#flist" title="Permanent link">&para;</a></h3>
+<p>flist( String path, String extension, Integer scanSubDirectories )</p>
+<p>Returns a list (array) of files with given extension located in given path. Function handles .pk3 folder structure and normal system directories. When scanSubDirectories equals 1, function will include subdirectories located under directory path.</p>
+<p>Extension needs to have "." (dot) included. Otherwise it will act as filter.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.list = flist local.path local.extension local.scanSubDirectories
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>List with filenames and their paths found.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can open only 32 files at once.</p>
+</div>
+<h2 id="ihuddraws">iHuddraws<a class="headerlink" href="#ihuddraws" title="Permanent link">&para;</a></h2>
+<p>ScriptThread -&gt; Listener -&gt; Class</p>
+<h3 id="ihuddraw_align">ihuddraw_align<a class="headerlink" href="#ihuddraw_align" title="Permanent link">&para;</a></h3>
+<p>ihuddraw_align( Entity player, Integer index, String h_align, String v_align )</p>
+<p>Sets the alignment of a huddraw element for individual player.</p>
+<p>Where:</p>
+<ul>
+<li>h_align = "left", "center", "right"</li>
+<li>v_align = "bottom", "center", "top"</li>
+<li>index = index of huddraw element to be set</li>
+<li>player = entity of player that will have his huddraw element set</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_align $player[1] 15 right top
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_align( $player[1] 15 &quot;right&quot; &quot;top&quot; )
+</code></pre></div>
+
+<h3 id="ihuddraw_alpha">ihuddraw_alpha<a class="headerlink" href="#ihuddraw_alpha" title="Permanent link">&para;</a></h3>
+<p>ihuddraw_alpha( Entity player, Integer index, Float alpha )</p>
+<p>Sets the alpha of a huddraw element for individual player.</p>
+<p>Where:</p>
+<ul>
+<li>index = index of huddraw element to be set</li>
+<li>player = entity of player that will have his huddraw element set</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_alpha $player[1] 15 1
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_alpha( $player[1] 15 1 )
+</code></pre></div>
+
+<h3 id="ihuddraw_color">ihuddraw_color<a class="headerlink" href="#ihuddraw_color" title="Permanent link">&para;</a></h3>
+<p>ihuddraw_color( Entity player, Integer index, Float red, Float green, Float blue )</p>
+<p>Sets the color for a huddraw element for individual player.</p>
+<p>Where:</p>
+<ul>
+<li>index = index of huddraw element to be set</li>
+<li>player = entity of player that will have his huddraw element set</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_color $player[1] 15 1 1 1
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_color( $player[1] 15 1 1 1 )
+</code></pre></div>
+
+<h3 id="ihuddraw_font">ihuddraw_font<a class="headerlink" href="#ihuddraw_font" title="Permanent link">&para;</a></h3>
+<p>ihuddraw_font( Entity player, Integer index, String fontname )</p>
+<p>Sets the font to use for a huddraw element, for individual player.</p>
+<p>Where:</p>
+<ul>
+<li>index = index of huddraw element to be set</li>
+<li>player = entity of player that will have his huddraw element set</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_font $player[1] 15 &quot;verdana-14&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_font( $player[1] 15 &quot;verdana-14&quot; )
+</code></pre></div>
+
+<h3 id="ihuddraw_rect">ihuddraw_rect<a class="headerlink" href="#ihuddraw_rect" title="Permanent link">&para;</a></h3>
+<p>ihuddraw_rect( Entity player, Integer index, Integer x, Integer y, Integer width, Integer height )</p>
+<p>Specifies the position of the upper left corner and size of a huddraw element for individual player</p>
+<p>Where:</p>
+<ul>
+<li>index = index of huddraw element to be set</li>
+<li>player = entity of player that will have his huddraw element set</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_rect $player[1] 15 -140 65 0 0
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_rect( $player[1] 15 -140 65 0 0 )
+</code></pre></div>
+
+<h3 id="ihuddraw_shader">ihuddraw_shader<a class="headerlink" href="#ihuddraw_shader" title="Permanent link">&para;</a></h3>
+<p>ihuddraw_shader( Entity player, Integer index, String shader )</p>
+<p>Sets the shader to use for a particular huddraw element for individual player</p>
+<p>Where:</p>
+<ul>
+<li>index = index of huddraw element to be set</li>
+<li>player = entity of player that will have his huddraw element set</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_shader $player[1] 15 &quot;textures/hud/axis&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_shader( $player[1] 15 &quot;textures/hud/axis&quot; )
+</code></pre></div>
+
+<h3 id="ihuddraw_string">ihuddraw_string<a class="headerlink" href="#ihuddraw_string" title="Permanent link">&para;</a></h3>
+<p>ihuddraw_string( Entity player, Integer index, String string )</p>
+<p>Sets a string to be displayed. Clears the shader value of huddraw element for individual player</p>
+<p>Where:</p>
+<ul>
+<li>index = index of huddraw element to be set</li>
+<li>player = entity of player that will have his huddraw element set</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_string $player[1] 15 &quot;I luv Reborn 1.12 Patch!&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_string( $player[1] 15 &quot;I luv Reborn 1.12 Patch!&quot; )
+</code></pre></div>
+
+<h3 id="ihuddraw_virtualsize">ihuddraw_virtualsize<a class="headerlink" href="#ihuddraw_virtualsize" title="Permanent link">&para;</a></h3>
+<p>ihuddraw_virtualsize( Entity player, Integer index, Integer virtual )</p>
+<p>Sets if the huddraw element (for individual player) should use virutal screen resolution for positioning and size.</p>
+<p>Where:</p>
+<ul>
+<li>index = index of huddraw element to be set</li>
+<li>player = entity of player that will have his huddraw element set</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_virtualsize $player[1] 15 1
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>ihuddraw_virtualsize( $player[1] 15 1 )
+</code></pre></div>
+
+<h2 id="player">Player<a class="headerlink" href="#player" title="Permanent link">&para;</a></h2>
+<p>ScriptThread -&gt; Listener -&gt; Class</p>
+<h3 id="netname">netname<a class="headerlink" href="#netname" title="Permanent link">&para;</a></h3>
+<p>netname( Entity player )</p>
+<p>Gets player's name and returns it as string.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.player_name = netname $player[1]
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.player_name = netname( $player[1] )
+</code></pre></div>
+
+<h3 id="getip">getip<a class="headerlink" href="#getip" title="Permanent link">&para;</a></h3>
+<p>getip( Entity player )</p>
+<p>Gets player's ip address with port and returns it as string.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.player_ip = getip $player[1]
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.player_ip = getip( $player[1] )
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>127.0.0.1:12203
+</code></pre></div>
+
+<h3 id="getping">getping<a class="headerlink" href="#getping" title="Permanent link">&para;</a></h3>
+<p>getping( Entity player )</p>
+<p>Gets player's ping and returns it as integer.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.player_ping = getping $player[1]
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.player_ping = getping( $player[1] )
+</code></pre></div>
+
+<h3 id="getclientnum">getclientnum<a class="headerlink" href="#getclientnum" title="Permanent link">&para;</a></h3>
+<p>getclientnum( Entity player )</p>
+<p>Gets player's client number and returns it as integer.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.player_clnum = getclientnum $player[1]
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.player_clnum = getclientnum( $player[1] )
+</code></pre></div>
+
+<h2 id="player_1">Player<a class="headerlink" href="#player_1" title="Permanent link">&para;</a></h2>
+<p>Player (player) -&gt; Sentient -&gt; Animate -&gt; Entity -&gt; SimpleEntity -&gt; Listener -&gt; Class</p>
+<h3 id="addkills">addkills<a class="headerlink" href="#addkills" title="Permanent link">&para;</a></h3>
+<p>addkills( Integer kills )</p>
+<p>Adds number of kills to player. (Can be also negative)
+Example:</p>
+<div class="codehilite"><pre><span></span><code>$player[1] addkills 5
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>$player[1] addkills -5
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If player had 8 kills, he will have 13 kills
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>If player had 8 kills, he will have 3 kills
+</code></pre></div>
+
+<h3 id="adddeaths">adddeaths<a class="headerlink" href="#adddeaths" title="Permanent link">&para;</a></h3>
+<p>adddeaths( Integer deaths )</p>
+<p>Adds number of deaths to player. (Can be also negative)
+Example:</p>
+<div class="codehilite"><pre><span></span><code>$player[1] adddeaths 5
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>$player[1] adddeaths -5
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>If player had 8 deaths, he will have 13 deaths
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>If player had 8 deaths, he will have 3 deaths
+</code></pre></div>
+
+<h3 id="getkills">getkills<a class="headerlink" href="#getkills" title="Permanent link">&para;</a></h3>
+<p>getkills( void )</p>
+<p>Gets number of player's kills and returns it as integer
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.player_kills = $player[1] getkills
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.player_kills = $player[1] getkills( )
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Number of players that this player has killed.
+</code></pre></div>
+
+<h3 id="getdeaths">getdeaths<a class="headerlink" href="#getdeaths" title="Permanent link">&para;</a></h3>
+<p>getdeaths( void )</p>
+<p>Gets number of player's deaths and returns it as integer.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.player_deaths = $player[1] getdeaths
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.player_deaths = $player[1] getdeaths( )
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Number of player&#39;s deaths.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before using this function, check game type that is currently running. When g_gametype is 3 or 4, deaths aren't counted and result of this function will equal to kills amount that player has</p>
+</div>
+<h3 id="isadmin">isadmin<a class="headerlink" href="#isadmin" title="Permanent link">&para;</a></h3>
+<p>isadmin( void )</p>
+<p>Checks if player is currently logged in as server administrator.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.admin = $player[1] isadmin
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.admin = $player[1] isadmin( )
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Returns 1 if player is logged in as administrator, otherwise it returns 0.
+</code></pre></div>
+
+<h3 id="getconnstate">getconnstate<a class="headerlink" href="#getconnstate" title="Permanent link">&para;</a></h3>
+<p>getconnstate( void )</p>
+<p>Gets state of player's connection.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.connection_state = $player[1] getconnstate
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.connection_state = $player[1] getconnstate( )
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Returns integer value:
+0 = CS_FREE - given player slot is free
+1 = CS_ZOMBIE - given player slot is in zombie state (his data is still kept after he disconnected or lost connection)
+2 = CS_CONNECTED - player has connected to server, but he&#39;s not yet in the game
+3 = CS_PRIMED - player has passed through authorization checks and finished downloading any missing files
+4 = CS_ACTIVE - player is in game and can start playing
+</code></pre></div>
+
+<h3 id="getactiveweap">getactiveweap<a class="headerlink" href="#getactiveweap" title="Permanent link">&para;</a></h3>
+<p>getactiveweap( Integer weaponhand )</p>
+<p>Gets currently active weapon from player's hand of given index
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.weapon = $player[1] getactiveweap 0
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.weapon = $player[1] getactiveweap(0)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Weapon entity.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can use weaponhand index from 0-2 range, but it's preffered to use only 0 index, because other indexes my return false values that might crash server</p>
+</div>
+<h3 id="secfireheld">.secfireheld<a class="headerlink" href="#secfireheld" title="Permanent link">&para;</a></h3>
+<p>.secfireheld( void )</p>
+<p>Returns 1 if player is holding secondary fire button.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>if( $player[1].secfireheld == 1 )
+...
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>1 = player is holding secondary fire button
+0 = opposite
+</code></pre></div>
+
+<h3 id="userinfo">.userinfo<a class="headerlink" href="#userinfo" title="Permanent link">&para;</a></h3>
+<p>.userinfo( void )</p>
+<p>Returns player's userinfo
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.userinfo = $player[1].userinfo
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>String with player&#39;s userinfo
+</code></pre></div>
+
+<h3 id="inventory">.inventory<a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h3>
+<p>.inventory( void )</p>
+<p>Returns player's inventory
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.inventory= $player[1].inventory
+
+local.inventorySize = $player[1].inventory.size
+
+local.item1 = $player[1].inventory[0]
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Array with entities in player&#39;s inventory. You can assign it to a variable or access directly.
+</code></pre></div>
+
+<h3 id="bindweap">bindweap<a class="headerlink" href="#bindweap" title="Permanent link">&para;</a></h3>
+<p>bindweap( Entity weapon )</p>
+<p>Binds weapon to player. Sets him as weapon owner.
+2nd use of the command will unbind the weapon from player.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>$player[1] bindweap local.weapon
+local.weapon anim fire
+$player[1] bindweap local.weapon
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Sets player as weapon owner.
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is sort of a hack&amp;trick scripting command. It should only be used by experienced users and only like shown in the example - just before firing the weapon and just after, to unbind it from the player. Otherwise you can have errors, weapon model glued to player, or server crashes. It should be used only for some kind of remote turrets etc.</p>
+</div>
+<h2 id="maths">Maths<a class="headerlink" href="#maths" title="Permanent link">&para;</a></h2>
+<p>ScriptThread -&gt; Listener -&gt; Class</p>
+<h3 id="cos">cos<a class="headerlink" href="#cos" title="Permanent link">&para;</a></h3>
+<p>cos( Float x )</p>
+<p>Returns the cosine of an angle of x radians.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = cos local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Cosine of x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cos</p>
+</div>
+<h3 id="sin">sin<a class="headerlink" href="#sin" title="Permanent link">&para;</a></h3>
+<p>sin( Float x )</p>
+<p>Returns the sine of an angle of x radians.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = cos local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Cosine of x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cos</p>
+</div>
+<h3 id="tan">tan<a class="headerlink" href="#tan" title="Permanent link">&para;</a></h3>
+<p>tan( Float x )</p>
+<p>Returns the tangent of an angle of x radians.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = tan local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Tangent of x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - tan</p>
+</div>
+<h3 id="acos">acos<a class="headerlink" href="#acos" title="Permanent link">&para;</a></h3>
+<p>acos( Float x )</p>
+<p>Returns the principal value of the arc cosine of x, expressed in radians.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = acos local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Floating point value in the interval [-1,+1].
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - acos</p>
+</div>
+<h3 id="asin">asin<a class="headerlink" href="#asin" title="Permanent link">&para;</a></h3>
+<p>asin( Float x )</p>
+<p>Returns the principal value of the arc sine of x, expressed in radians.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = asin local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Floating point value in the interval [-1,+1].
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - asin</p>
+</div>
+<h3 id="atan">atan<a class="headerlink" href="#atan" title="Permanent link">&para;</a></h3>
+<p>atan( Float x )</p>
+<p>Returns the principal value of the arc tangent of x, expressed in radians.</p>
+<p>Notice that because of the sign ambiguity, a function cannot determine with certainty in which quadrant the angle falls only by its tangent value. You can use atan2 if you need to determine the quadrant.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = atan local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Principal arc tangent of x, in the interval [-pi/2,+pi/2] radians.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - atan</p>
+</div>
+<h3 id="atan2">atan2<a class="headerlink" href="#atan2" title="Permanent link">&para;</a></h3>
+<p>atan2( Float y, [I]Float[I] x )</p>
+<p>Returns the principal value of the arc tangent of y/x, expressed in radians.</p>
+<p>To compute the value, the function uses the sign of both arguments to determine the quadrant.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = atan2 local.y local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Principal arc tangent of y/x, in the interval [-pi,+pi] radians.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - atan2</p>
+</div>
+<h3 id="cosh">cosh<a class="headerlink" href="#cosh" title="Permanent link">&para;</a></h3>
+<p>cosh( Float x )</p>
+<p>Returns the hyperbolic cosine of x.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = cosh local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Hyperbolic cosine of x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - cosh</p>
+</div>
+<h3 id="sinh">sinh<a class="headerlink" href="#sinh" title="Permanent link">&para;</a></h3>
+<p>sinh( Float x )</p>
+<p>Returns the hyperbolic sine of x.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = sinh local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Hyperbolic sine of x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - sinh</p>
+</div>
+<h3 id="tanh">tanh<a class="headerlink" href="#tanh" title="Permanent link">&para;</a></h3>
+<p>tanh( Float x )</p>
+<p>Returns the hyperbolic tangent of x.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = tanh local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Hyperbolic tangent of x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - tanh</p>
+</div>
+<h3 id="exp">exp<a class="headerlink" href="#exp" title="Permanent link">&para;</a></h3>
+<p>exp( Float x )</p>
+<p>Returns the base-e exponential function of x, which is the e number raised to the power x.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = exp local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Exponential value of x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - exp</p>
+</div>
+<h3 id="frexp">frexp<a class="headerlink" href="#frexp" title="Permanent link">&para;</a></h3>
+<p>frexp( Float x )</p>
+<p>Breaks the floating point number x into its binary significand (a floating point value between 0.5(included) and 1.0(excluded)) and an integral exponent for 2, such that:</p>
+<p>x = significand * 2exponent
+If x is zero, both parts (significand and exponent) are zero.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = frexp local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>local.result[&quot;significand&quot;] - significand part
+local.result[&quot;exponent&quot;] - exponent part
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - frexp</p>
+</div>
+<h3 id="ldexp">ldexp<a class="headerlink" href="#ldexp" title="Permanent link">&para;</a></h3>
+<p>ldexp( Float x, Integer exponent )</p>
+<p>Returns the resulting floating point value from multiplying x (the significand) by 2 raised to the power of exp (the exponent).</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = ldexp local.x local.exponent
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>The function returns float number:
+
+x * 2&lt;sup&gt;exp&lt;/sup&gt;
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ldexp</p>
+</div>
+<h3 id="log">log<a class="headerlink" href="#log" title="Permanent link">&para;</a></h3>
+<p>log( Float x )</p>
+<p>Returns the natural logarithm of x.</p>
+<p>The natural logarithm is the base-e logarithm, the inverse of the natural exponential function (exp). For base-10 logarithms, a specific function log10 exists.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = log local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Natural logarithm of x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - log</p>
+</div>
+<h3 id="log10">log10<a class="headerlink" href="#log10" title="Permanent link">&para;</a></h3>
+<p>log10( Float x )</p>
+<p>Returns the common (base-10) logarithm of x.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = log10 local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Common logarithm of x, for values of x greater than zero.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - log10</p>
+</div>
+<h3 id="modf">modf<a class="headerlink" href="#modf" title="Permanent link">&para;</a></h3>
+<p>modf( Float x )</p>
+<p>Breaks x into two parts: the integer part and the fractional part.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = modf local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>local.result[&quot;intpart&quot;] - integer part
+local.result[&quot;fractional&quot;] - fractional part
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - modf</p>
+</div>
+<h3 id="pow">pow<a class="headerlink" href="#pow" title="Permanent link">&para;</a></h3>
+<p>pow( Float x, Integer exponent )</p>
+<p>Returns base raised to the power exponent:</p>
+<p>baseexponent</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = pow local.x local.exponent
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>The result of raising base to the power exponent.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - pow</p>
+</div>
+<h3 id="sqrt">sqrt<a class="headerlink" href="#sqrt" title="Permanent link">&para;</a></h3>
+<p>sqrt( Float x )</p>
+<p>Returns the square root of x.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = sqrt local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Square root of x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - sqrt</p>
+</div>
+<h3 id="ceil">ceil<a class="headerlink" href="#ceil" title="Permanent link">&para;</a></h3>
+<p>ceil( Float x )</p>
+<p>Returns the smallest integral value that is not less than x.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = ceil local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>The smallest integral value not less than x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - ceil</p>
+</div>
+<h3 id="floor">floor<a class="headerlink" href="#floor" title="Permanent link">&para;</a></h3>
+<p>floor( Float x )</p>
+<p>Returns the largest integral value that is not greater than x.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = floor local.x
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>The largest integral value not greater than x.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - floor</p>
+</div>
+<h3 id="fmod">fmod<a class="headerlink" href="#fmod" title="Permanent link">&para;</a></h3>
+<p>fmod( Float numerator, Float denominator )</p>
+<p>Returns the floating-point remainder of numerator/denominator.</p>
+<p>The remainder of a division operation is the result of subtracting the integral quotient multiplied by the denominator from the numerator:</p>
+<div class="codehilite"><pre><span></span><code>remainder = numerator - quotient * denominator
+</code></pre></div>
+
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = fmod local.numerator local.denominator
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>The remainder of dividing the arguments.
+</code></pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command works exactly like ANSI C function. For further documentation, please visit: ANSI C - fmod</p>
+</div>
+<h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
+<p>ScriptThread -&gt; Listener -&gt; Class</p>
+<h3 id="registerev">registerev<a class="headerlink" href="#registerev" title="Permanent link">&para;</a></h3>
+<p>registerev( String eventname, String scriptname )</p>
+<p>Registers script callback handler for given event type.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = registerev &quot;connected&quot; global/eventhandlers.scr::connected
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.result = registerev(&quot;connected&quot; global/eventhandlers.scr::connected)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>When given even type will occur, EventSystem engine will execute given script.
+
+local.result can have one of the following values:
+
+0 = Registering event callback handler was successful
+1 = Event callback handler is already registered for given event
+2 = Memory allocation error
+</code></pre></div>
+
+<p>Please see Reborn Events System documentation for further information.</p>
+<h3 id="unregisterev">unregisterev<a class="headerlink" href="#unregisterev" title="Permanent link">&para;</a></h3>
+<p>unregisterev( String eventname )</p>
+<p>Unregisters script callback handler for given event type.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.result = unregisterev &quot;connected&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.result = unregisterev(&quot;connected&quot;)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>EventSystem engine will unregister events of given type and won&#39;t execute their script callback handlers.
+
+local.result can have one of the following values:
+
+0 = Unregistering event callback handler was successful
+1 = Event callback handler is already unregistered
+</code></pre></div>
+
+<p>Please see Reborn Events System documentation for further information.</p>
+<h2 id="datetime">Date/Time<a class="headerlink" href="#datetime" title="Permanent link">&para;</a></h2>
+<p>ScriptThread -&gt; Listener -&gt; Class</p>
+<h3 id="gettime">gettime<a class="headerlink" href="#gettime" title="Permanent link">&para;</a></h3>
+<p>gettime( Integer zero )</p>
+<p>Gets current time in format: H:M:S
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.time = gettime 0
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.time = gettime(0)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>String with current time.
+</code></pre></div>
+
+<h3 id="gettimezone">gettimezone<a class="headerlink" href="#gettimezone" title="Permanent link">&para;</a></h3>
+<p>gettimezone( Integer zero )</p>
+<p>Gets current time zone.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.timezone = gettimezone 0
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.timezone = gettimezone(0)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Integer value that represents current time zone.
+eg. 2 = GMT +2
+</code></pre></div>
+
+<h3 id="getdate">getdate<a class="headerlink" href="#getdate" title="Permanent link">&para;</a></h3>
+<p>getdate( String format )</p>
+<p>Gets current date in format given as parameter.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.date = getdate &quot;%D&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.date = getdate(&quot;%D&quot;)
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>String with current date.
+
+04/06/18
+</code></pre></div>
+
+<p>Formatting options:
+http://www.cplusplus.com/reference/ctime/strftime/</p>
+<p>Max format length is 512 characters.</p>
+<h2 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">&para;</a></h2>
+<p>ScriptThread -&gt; Listener -&gt; Class</p>
+<h3 id="getentity">getentity<a class="headerlink" href="#getentity" title="Permanent link">&para;</a></h3>
+<p>getentity( Integer entnum)</p>
+<p>Returns entity with given entity number
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.entity = getentity 0
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.entity = getentity( 0 )
+</code></pre></div>
+
+<p>Entities with entity number between 0 and (sv_maxclients - 1) are reserved for players, and thus <code>getentity 0</code> is equal to the client number 0 on the "status" list.</p>
+<h3 id="stuffsrv">stuffsrv<a class="headerlink" href="#stuffsrv" title="Permanent link">&para;</a></h3>
+<p>stuffsrv( String s )</p>
+<p>Sends command to server console.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>stuffsrv &quot;restart&quot;
+stuffsrv( &quot;restart&quot; )
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>stuffsrv &quot;map dm/mohdm1&quot;
+stuffsrv( &quot;map dm/mohdm1&quot; )
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Server will restart
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>Server will change map to dm/mohdm1
+</code></pre></div>
+
+<h3 id="conprintf">conprintf<a class="headerlink" href="#conprintf" title="Permanent link">&para;</a></h3>
+<p>conprintf( String text )</p>
+<p>Prints text to a console.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>conprintf &quot;This can be a custom error message from the script&quot;
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>conprintf( &quot;This can be a custom error message from the script&quot; )
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Text will be printed to the console.
+</code></pre></div>
+
+<h3 id="md5string">md5string<a class="headerlink" href="#md5string" title="Permanent link">&para;</a></h3>
+<p>md5string( String text )</p>
+<p>Generates MD5 checksum of text
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.checksum = md5string local.text
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>MD5 checksum as string.
+</code></pre></div>
+
+<h3 id="md5file">md5file<a class="headerlink" href="#md5file" title="Permanent link">&para;</a></h3>
+<p>md5file( String filename )</p>
+<p>Generates MD5 checksum of file with given filename
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.checksum = md5file local.filename
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>MD5 checksum as string.
+</code></pre></div>
+
+<h3 id="typeof">typeof<a class="headerlink" href="#typeof" title="Permanent link">&para;</a></h3>
+<p>typeof( Variable var )</p>
+<p>Gets the type of variable.
+Example:</p>
+<div class="codehilite"><pre><span></span><code>local.type = typeof local.var
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>The type of variable returned as string (array, string, vector, listener, ...)
+</code></pre></div>
+
+<h3 id="traced">traced<a class="headerlink" href="#traced" title="Permanent link">&para;</a></h3>
+<p>traced( Vector start, Vector end, [Integer pass_entities], [Vecotr mins], [Vector maxs], [Integer mask])</p>
+<p>Performs a ray trace from start origin to end origin. It takes optional arguments such as entity number to be ignored/skipped by the trace, mins and maxs of trace box and trace mask.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>local.trace = traced local.start local.end
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.trace = traced local.start local.end local.pass_entities local.mins
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>local.trace = traced local.start local.end local.pass_entities local.mins local.maxs local.mask
+</code></pre></div>
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span><code>Array holding detailed information about trace:
+
+local.trace[&quot;allSolid&quot;] - &lt;i&gt;Integer&lt;/i&gt; : it tells wheter trace was inside of a solid object
+local.trace[&quot;startSolid&quot;] - &lt;i&gt;Integer&lt;/i&gt; : it tells wheter trace started in solid object
+local.trace[&quot;fraction&quot;] - &lt;i&gt;Float&lt;/i&gt;
+local.trace[&quot;endPos&quot;] - &lt;i&gt;Vector&lt;/i&gt; : position where trace finished because it may finish before it reaches end point specified by caller when it hits object with specified mask before it reaches end point
+local.trace[&quot;surfaceFlags&quot;] - &lt;i&gt;Integer&lt;/i&gt;
+local.trace[&quot;shaderNum&quot;] - &lt;i&gt;Integer&lt;/i&gt;
+local.trace[&quot;contents&quot;] - &lt;i&gt;Integer&lt;/i&gt;
+local.trace[&quot;entityNum&quot;] - &lt;i&gt;Integer&lt;/i&gt; : entity number that was hit
+local.trace[&quot;location&quot;] - &lt;i&gt;Integer&lt;/i&gt;
+local.trace[&quot;entity&quot;] - &lt;i&gt;Entity&lt;/i&gt; : entity that was hit by the trace
+</code></pre></div>
+
+<p>Surface Flags:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SURF_NODAMAGE</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SURF_SLICK</td>
+<td>2</td>
+</tr>
+<tr>
+<td>SURF_SKY</td>
+<td>4</td>
+</tr>
+<tr>
+<td>SURF_LADDER</td>
+<td>8</td>
+</tr>
+<tr>
+<td>SURF_NOIMPACT</td>
+<td>16</td>
+</tr>
+<tr>
+<td>SURF_NOMARKS</td>
+<td>32</td>
+</tr>
+<tr>
+<td>SURF_CASTSHADOW</td>
+<td>64</td>
+</tr>
+<tr>
+<td>SURF_PAPER</td>
+<td>8192</td>
+</tr>
+<tr>
+<td>SURF_WOOD</td>
+<td>16384</td>
+</tr>
+<tr>
+<td>SURF_METAL</td>
+<td>32768</td>
+</tr>
+<tr>
+<td>SURF_STONE</td>
+<td>65536</td>
+</tr>
+<tr>
+<td>SURF_DIRT</td>
+<td>131072</td>
+</tr>
+<tr>
+<td>SURF_METALGRILL</td>
+<td>262144</td>
+</tr>
+<tr>
+<td>SURF_GRASS</td>
+<td>524288</td>
+</tr>
+<tr>
+<td>SURF_MUD</td>
+<td>1048576</td>
+</tr>
+<tr>
+<td>SURF_PUDDLE</td>
+<td>2097152</td>
+</tr>
+<tr>
+<td>SURF_GLASS</td>
+<td>4194304</td>
+</tr>
+<tr>
+<td>SURF_GRAVEL</td>
+<td>8388608</td>
+</tr>
+<tr>
+<td>SURF_SAND</td>
+<td>16777216</td>
+</tr>
+<tr>
+<td>SURF_FOLIAGE</td>
+<td>33554432</td>
+</tr>
+<tr>
+<td>SURF_SNOW</td>
+<td>67108864</td>
+</tr>
+<tr>
+<td>SURF_CARPET</td>
+<td>134217728</td>
+</tr>
+<tr>
+<td>SURF_BACKSIDE</td>
+<td>268435456</td>
+</tr>
+<tr>
+<td>SURF_NODLIGHT</td>
+<td>536870912</td>
+</tr>
+<tr>
+<td>SURF_HINT</td>
+<td>1073741824</td>
+</tr>
+</tbody>
+</table>
+<p>Masks:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MASK_SOLID</td>
+<td>1</td>
+</tr>
+<tr>
+<td>MASK_COLLISION</td>
+<td>637537057</td>
+</tr>
+<tr>
+<td>MASK_PERMANENTMARK</td>
+<td>1073741825</td>
+</tr>
+<tr>
+<td>MASK_AUTOCALCLIFE</td>
+<td>1073750049</td>
+</tr>
+<tr>
+<td>MASK_EXPLOSION</td>
+<td>1074003969</td>
+</tr>
+<tr>
+<td>MASK_TREADMARK</td>
+<td>1107372801</td>
+</tr>
+<tr>
+<td>MASK_THIRDPERSON</td>
+<td>1107372857</td>
+</tr>
+<tr>
+<td>MASK_FOOTSTEP</td>
+<td>1107437825</td>
+</tr>
+<tr>
+<td>MASK_BEAM</td>
+<td>1107569409</td>
+</tr>
+<tr>
+<td>MASK_VISIBLE</td>
+<td>1107569409</td>
+</tr>
+<tr>
+<td>MASK_VEHICLE</td>
+<td>1107569409</td>
+</tr>
+<tr>
+<td>MASK_BULLET</td>
+<td>1107569441</td>
+</tr>
+<tr>
+<td>MASK_SHOT</td>
+<td>1107569569</td>
+</tr>
+<tr>
+<td>MASK_CROSSHAIRSHADER</td>
+<td>1107897089</td>
+</tr>
+<tr>
+<td>MASK_TRACER</td>
+<td>1108618017</td>
+</tr>
+</tbody>
+</table>
+<p>Contents:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONTENTS_SOLID</td>
+<td>1</td>
+</tr>
+<tr>
+<td>CONTENTS_LAVA</td>
+<td>8</td>
+</tr>
+<tr>
+<td>CONTENTS_SLIME</td>
+<td>16</td>
+</tr>
+<tr>
+<td>CONTENTS_WATER</td>
+<td>32</td>
+</tr>
+<tr>
+<td>CONTENTS_FOG</td>
+<td>64</td>
+</tr>
+<tr>
+<td>CONTENTS_AREAPORTAL</td>
+<td>32768</td>
+</tr>
+<tr>
+<td>CONTENTS_PLAYERCLIP</td>
+<td>65536</td>
+</tr>
+<tr>
+<td>CONTENTS_MONSTERCLIP</td>
+<td>131072</td>
+</tr>
+<tr>
+<td>CONTENTS_WEAPONCLIP</td>
+<td>262144</td>
+</tr>
+<tr>
+<td>CONTENTS_SHOOTABLEONLY</td>
+<td>1048576</td>
+</tr>
+<tr>
+<td>CONTENTS_ORIGIN</td>
+<td>16777216</td>
+</tr>
+<tr>
+<td>CONTENTS_BODY</td>
+<td>33554432</td>
+</tr>
+<tr>
+<td>CONTENTS_CORPSE</td>
+<td>67108864</td>
+</tr>
+<tr>
+<td>CONTENTS_DETAIL</td>
+<td>134217728</td>
+</tr>
+<tr>
+<td>CONTENTS_STRUCTURAL</td>
+<td>268435456</td>
+</tr>
+<tr>
+<td>CONTENTS_TRANSLUCENT</td>
+<td>536870912</td>
+</tr>
+<tr>
+<td>CONTENTS_TRIGGER</td>
+<td>1073741824</td>
+</tr>
+<tr>
+<td>CONTENTS_NODROP</td>
+<td>2147483648</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020 MoH Reborn Team
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mohreborn" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/QYNNkCdHBK" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
